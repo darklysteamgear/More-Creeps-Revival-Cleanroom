@@ -1,6 +1,5 @@
 package com.morecreepsrevival.morecreeps.common;
 
-import com.morecreepsrevival.morecreeps.client.gui.GuiUpdate;
 import com.morecreepsrevival.morecreeps.common.capabilities.CreepsCapabilityHandler;
 import com.morecreepsrevival.morecreeps.common.capabilities.IPlayerJumping;
 import com.morecreepsrevival.morecreeps.common.capabilities.PlayerJumpingProvider;
@@ -65,10 +64,9 @@ import java.util.*;
 @Mod(modid = MoreCreepsAndWeirdos.modid, name = MoreCreepsAndWeirdos.name, version = MoreCreepsAndWeirdos.version, useMetadata = true)
 @EventBusSubscriber(modid = MoreCreepsAndWeirdos.modid)
 public class MoreCreepsAndWeirdos {
+
     public static final String modid = "morecreeps";
-
     public static final String name = "More Creeps And Weirdos Revival";
-
     public static final String version = "1.0.25";
 
     public static final CreativeTabs creativeTab = new CreativeTabs("creepsTab") {
@@ -122,8 +120,6 @@ public class MoreCreepsAndWeirdos {
     private static MoreCreepsAndWeirdos INSTANCE;
 
     private static int entityId = 0;
-    private static boolean checkedVersion = false;
-    public boolean test = false;
 
     @SubscribeEvent
     public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
@@ -387,20 +383,6 @@ public class MoreCreepsAndWeirdos {
         LocalDate now = LocalDate.now();
 
         return LocalDate.of(now.getYear(), 11, 1).with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY)).with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).equals(now);
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public static void handleDrawScreenEventPost(GuiScreenEvent.DrawScreenEvent.Post event) {
-        ForgeVersion.CheckResult result = ForgeVersion.getResult(Loader.instance().activeModContainer());
-
-        if (result.status != ForgeVersion.Status.PENDING && !MoreCreepsAndWeirdos.checkedVersion) {
-            MoreCreepsAndWeirdos.checkedVersion = true;
-
-            if (result.status == ForgeVersion.Status.OUTDATED && result.target != null && MoreCreepsConfig.shouldShowUpdateGuiForVersion(result.target.toString())) {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiUpdate(result));
-            }
-        }
     }
 
     @EventHandler
