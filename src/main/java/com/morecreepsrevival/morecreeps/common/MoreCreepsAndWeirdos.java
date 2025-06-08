@@ -114,10 +114,13 @@ public class MoreCreepsAndWeirdos {
             "Your pet loses a level if resurrected with a LifeGem.",
             "Sneaky Sal will sometimes sell goods at a discount."
     };
+
     @SidedProxy(clientSide = "com.morecreepsrevival.morecreeps.proxy.ClientProxy", serverSide = "com.morecreepsrevival.morecreeps.proxy.ServerProxy")
     public static IProxy proxy;
+
     @Instance(modid)
-    public static MoreCreepsAndWeirdos instance;
+    private static MoreCreepsAndWeirdos INSTANCE;
+
     private static int entityId = 0;
     private static boolean checkedVersion = false;
     public boolean test = false;
@@ -435,4 +438,9 @@ public class MoreCreepsAndWeirdos {
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
+
+    public static MoreCreepsAndWeirdos getInstance() {
+        return INSTANCE;
+    }
+
 }
