@@ -132,23 +132,13 @@ public class EntityRobotTed extends EntityCreepBase implements IMob, IEntityCanC
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.15f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
     public float maxGrowth() {
         return 6.0f;
-    }
-
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
     }
 
     @Override

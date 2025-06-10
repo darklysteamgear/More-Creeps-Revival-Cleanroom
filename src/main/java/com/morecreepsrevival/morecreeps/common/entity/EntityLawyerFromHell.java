@@ -427,7 +427,7 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.2f;
     }
 
@@ -453,11 +453,6 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
     @Override
     public float maxGrowth() {
         return 5.0f;
-    }
-
-    @Override
-    public float getGrowRayAmount() {
-        return 0.2F;
     }
 
     @Override

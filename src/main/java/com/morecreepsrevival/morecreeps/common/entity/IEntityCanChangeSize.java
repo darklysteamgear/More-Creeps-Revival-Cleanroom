@@ -1,20 +1,21 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 public interface IEntityCanChangeSize {
+
+    /**
+     * The amount a shrink/grow ray shrinks/grows this entity when it hits.
+     */
+    float getRayAmount();
+
     /**
      * The maximun size this entity can be.
      */
     float maxGrowth();
 
     /**
-     * The amount a grow ray grows this entity when it hits.
-     */
-    float getGrowRayAmount();
-
-    /**
      * What happens when this entity grows.
      */
-    void onGrow(EntityGrow source);
+    default void onGrow(EntityGrow source) {}
 
     /**
      * The smallest size this entity can be.
@@ -22,12 +23,7 @@ public interface IEntityCanChangeSize {
     float maxShrink();
 
     /**
-     * The amount a shrink ray shrinks this entity when it hits.
-     */
-    float getShrinkRayAmount();
-
-    /**
      * What happens when this entity shrinks.
      */
-    void onShrink(EntityShrink source);
+    default void onShrink(EntityShrink source) {}
 }

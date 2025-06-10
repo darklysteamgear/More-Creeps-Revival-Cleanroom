@@ -107,23 +107,13 @@ public class EntityRatMan extends EntityCreepBase implements IMob, IEntityCanCha
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.2f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
     public float maxGrowth() {
         return 3.0f;
-    }
-
-    @Override
-    public float getGrowRayAmount() {
-        return 0.2F;
     }
 
     @Override

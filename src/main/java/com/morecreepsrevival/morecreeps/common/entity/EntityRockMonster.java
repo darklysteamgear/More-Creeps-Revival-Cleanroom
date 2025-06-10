@@ -107,28 +107,13 @@ public class EntityRockMonster extends EntityCreepBase implements IEntityCanChan
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.2f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
     public float maxGrowth() {
         return 4.0f;
-    }
-
-    @Override
-    public float getGrowRayAmount() {
-        return 0.2F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
     }
 
     public class AIAttackEntity extends EntityAIBase {

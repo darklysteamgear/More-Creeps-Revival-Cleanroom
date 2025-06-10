@@ -85,7 +85,7 @@ public class EntityBlorp extends EntityCreepBase implements IEntityCanChangeSize
                     setHungry(false);
 
                     if (getModelSize() < 6.0f) {
-                        growModelSize(0.15f);
+                        growModelSize(0.15f, maxGrowth());
                         growHitboxSize(0.15f);
                     }
 
@@ -295,13 +295,8 @@ public class EntityBlorp extends EntityCreepBase implements IEntityCanChangeSize
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.25f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -309,13 +304,4 @@ public class EntityBlorp extends EntityCreepBase implements IEntityCanChangeSize
         return 5.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

@@ -470,13 +470,8 @@ public class EntitySneakySal extends EntityCreepBase implements IRangedAttackMob
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.2f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -485,12 +480,8 @@ public class EntitySneakySal extends EntityCreepBase implements IRangedAttackMob
     }
 
     @Override
-    public float getGrowRayAmount() {
-        return 0.2F;
-    }
-
-    @Override
     public void onGrow(EntityGrow source) {
         this.setDissedMax(0);
     }
+
 }

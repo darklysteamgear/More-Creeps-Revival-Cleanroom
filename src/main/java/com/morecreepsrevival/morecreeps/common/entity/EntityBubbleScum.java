@@ -136,13 +136,8 @@ public class EntityBubbleScum extends EntityCreepBase implements IEntityCanChang
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.15f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -150,13 +145,4 @@ public class EntityBubbleScum extends EntityCreepBase implements IEntityCanChang
         return 3.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

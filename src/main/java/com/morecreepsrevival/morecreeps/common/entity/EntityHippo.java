@@ -95,23 +95,13 @@ public class EntityHippo extends EntityCreepBase implements IEntityCanChangeSize
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.25f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
     public float maxGrowth() {
         return 3.0f;
-    }
-
-    @Override
-    public float getGrowRayAmount() {
-        return 0.25F;
     }
 
     @Override

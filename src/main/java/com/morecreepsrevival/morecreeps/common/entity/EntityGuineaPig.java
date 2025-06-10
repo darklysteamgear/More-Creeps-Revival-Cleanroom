@@ -731,13 +731,8 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.15f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -745,13 +740,4 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
         return 5.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

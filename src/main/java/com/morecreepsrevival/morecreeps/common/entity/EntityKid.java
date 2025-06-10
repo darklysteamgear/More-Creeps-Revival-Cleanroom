@@ -207,13 +207,8 @@ public class EntityKid extends EntityCreepBase implements IEntityCanChangeSize {
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.15f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -221,13 +216,4 @@ public class EntityKid extends EntityCreepBase implements IEntityCanChangeSize {
         return 5.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

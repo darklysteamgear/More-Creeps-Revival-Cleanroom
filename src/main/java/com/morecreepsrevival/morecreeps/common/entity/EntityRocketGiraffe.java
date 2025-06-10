@@ -431,13 +431,8 @@ public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanCh
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.15f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -445,13 +440,4 @@ public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanCh
         return 4.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.15F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

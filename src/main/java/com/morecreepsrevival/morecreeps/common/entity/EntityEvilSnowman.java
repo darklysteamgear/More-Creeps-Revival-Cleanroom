@@ -249,13 +249,8 @@ public class EntityEvilSnowman extends EntityCreepBase implements IMob, IEntityC
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.2f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -263,13 +258,4 @@ public class EntityEvilSnowman extends EntityCreepBase implements IMob, IEntityC
         return 7.0f;
     }
 
-    @Override
-    public float getGrowRayAmount() {
-        return 0.2F;
-    }
-
-    @Override
-    public void onGrow(EntityGrow source) {
-
-    }
 }

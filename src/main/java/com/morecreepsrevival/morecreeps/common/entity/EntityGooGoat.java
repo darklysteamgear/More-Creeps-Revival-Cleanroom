@@ -183,13 +183,8 @@ public class EntityGooGoat extends EntityCreepBase implements IEntityCanChangeSi
     }
 
     @Override
-    public float getShrinkRayAmount() {
+    public float getRayAmount() {
         return 0.25f;
-    }
-
-    @Override
-    public void onShrink(EntityShrink source) {
-
     }
 
     @Override
@@ -198,12 +193,8 @@ public class EntityGooGoat extends EntityCreepBase implements IEntityCanChangeSi
     }
 
     @Override
-    public float getGrowRayAmount() {
-        return 0.25F;
-    }
-
-    @Override
     public void onGrow(EntityGrow source) {
         this.increaseMoveSpeed(0.15f);
     }
+
 }
