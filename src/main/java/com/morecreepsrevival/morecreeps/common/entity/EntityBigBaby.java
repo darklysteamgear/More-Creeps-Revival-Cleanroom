@@ -214,7 +214,7 @@ public class EntityBigBaby extends EntityCreepBase implements IMob, IEntityCanCh
 
     @Override
     public float maxShrink() {
-        return 0.25f;
+        return 0.4f;
     }
 
     @Override

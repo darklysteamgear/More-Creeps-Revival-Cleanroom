@@ -1161,8 +1161,8 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
         dataManager.set(modelSize, f);
     }
 
-    public void shrinkModelSize(float f) {
-        setModelSize(Math.max(0.0f, getModelSize() - f));
+    public void shrinkModelSize(float f, float maxShrink) {
+        setModelSize(Math.max(maxShrink, getModelSize() - f));
     }
 
     public void growModelSize(float f) {

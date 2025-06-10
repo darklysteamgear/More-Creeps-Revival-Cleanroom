@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
+import net.minecraft.block.state.BlockStateBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -9,16 +10,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nonnull;
 
 public class EntityShrink extends EntityThrowable {
-    private static final float shrinkMax = 1.0f;
-    private static final float shrinkBonus = 0.45f;
+
     public EntityLivingBase lightValueOwn;
     protected int hitX;
     protected int hitY;
@@ -26,7 +25,6 @@ public class EntityShrink extends EntityThrowable {
     protected boolean aoLightValueZPos;
     protected int aoLightValueScratchXYZNNP;
     protected int aoLightValueScratchXYNN;
-    protected boolean aoLightValueScratchXYZNNN;
     protected boolean playerFire;
     protected float shrinkSize;
     protected int vibrate;
@@ -115,8 +113,26 @@ public class EntityShrink extends EntityThrowable {
 
     @Override
     protected void onImpact(@Nonnull RayTraceResult rtr) {
-        if(isDead || rtr.entityHit instanceof EntityPlayer)
+        if(isDead || rtr.entityHit instanceof EntityPlayer || world.isRemote)
              return;
+
+        // If the entity hit is null, it has hit a block
+        // Try to get an entity nearby the hit range.
+        // This is made to avoid accuracy issues and the ray passing through the entity.
+        if(rtr.entityHit == null) {
+            BlockPos pos = rtr.getBlockPos();
+            rtr.entityHit = world.getEntitiesInAABBexcluding(null,
+                    new AxisAlignedBB(pos.getX() - 1.5, pos.getY() - 1.5, pos.getZ() - 1.5,
+                            pos.getX() + 1.5, pos.getY() + 1.5, pos.getZ() + 1.5),
+                    (e) -> !(e instanceof EntityPlayer)
+            ).stream().findFirst().orElse(null);
+
+            // if entity is still null, but the block is not a full cube
+            // we can just ignore it and let the ray pass through
+            if(rtr.entityHit == null && !world.getBlockState(pos).isFullCube()) {
+                return;
+            }
+        }
 
         if (rtr.entityHit != null) {
             if (rtr.entityHit instanceof EntityLiving) {
@@ -130,7 +146,7 @@ public class EntityShrink extends EntityThrowable {
                     float currentSize = entityCreep.getModelSize();
                     if (currentSize > entitySizable.maxShrink()) {
                         float shrink = entitySizable.getShrinkRayAmount();
-                        entityCreep.shrinkModelSize(shrink);
+                        entityCreep.shrinkModelSize(shrink, entitySizable.maxShrink());
 
                         // Calculate the difference between the old model size and new
                         // Then, apply it to the hitbox size.
@@ -278,22 +294,11 @@ public class EntityShrink extends EntityThrowable {
     @Override
     public void setDead() {
         super.setDead();
-
-        blast();
-
         lightValueOwn = null;
     }
 
     private void smoke() {
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 4; j++) {
-                for (int k = 0; k < 5; k++) {
-                    world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (posX + (double) (rand.nextFloat() * width * 2.0f)) - (double) width, posY + (double) (rand.nextFloat() * height), (posZ + (double) (rand.nextFloat() * width * 2.0f)) - (double) width, rand.nextGaussian() * 0.12d, rand.nextGaussian() * 0.12d, rand.nextGaussian() * 0.12d);
-                }
-            }
-        }
+        ((WorldServer) world).spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, posX, posY, posZ, 140, 0.2d, 0.2d, 0.2d, 0.12d);
     }
 
-    private void blast() {
-    }
 }
