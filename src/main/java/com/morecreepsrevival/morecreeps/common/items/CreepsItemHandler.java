@@ -77,9 +77,11 @@ public class CreepsItemHandler {
     public static Item medicine;
     public static Item luckyDress;
     public static Item peeBucket;
-    //public static Item vhsTape;
-    //public static Item vhsTape2;
-    //public static Item vHammer;
+
+    // Currently disabled
+    public static Item vhsTape;
+    public static Item vhsTape2;
+    public static Item vHammer;
 
     public static ArmorMaterial ZEBRA_ARMOR = EnumHelper.addArmorMaterial("zebra_armor", "zebra_armor", 25, new int[]{2, 4, 6, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
