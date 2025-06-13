@@ -152,8 +152,8 @@ public class MoreCreepsAndWeirdos {
                 createEntity(EntityPony.class, "pony", 0, 0, 0, EnumCreatureType.CREATURE),
                 createEntity(EntityPonyCloud.class, "ponycloud", 0, 0, 0, EnumCreatureType.AMBIENT),
                 createEntity(EntityRockMonster.class, "rock_monster", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.rockMonsterSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x74706A, 0x373532, getBiomesForType(Type.MOUNTAIN, Type.DRY, Type.MOUNTAIN, Type.PLAINS)),
-                createEntity(EntityVHS.class, "vhs", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.vhsSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x858585, 0x4D4D4D, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
-                createEntity(EntityS.class, "s", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.moneyManSSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x1F1F1F, 0x87AE73, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
+                //createEntity(EntityVHS.class, "vhs", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.vhsSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x858585, 0x4D4D4D, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
+                //createEntity(EntityS.class, "s", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.moneyManSSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x1F1F1F, 0x87AE73, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
                 createEntity(EntityDesertLizard.class, "desert_lizard", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.desertLizardSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x1C5300, 0x609445, getBiomesForType(Type.HOT, Type.DEAD, Type.DRY, Type.SAVANNA, Type.SANDY)),
                 createEntity(EntityHippo.class, "hippo", MoreCreepsConfig.calculateSpawnRate(MoreCreepsConfig.hippoSpawnAmt), 1, 1, EnumCreatureType.CREATURE, 0x858585, 0x4D4D4D, getBiomesForType(Type.PLAINS, Type.HOT, Type.WET, Type.BEACH, Type.SAVANNA, Type.SWAMP, Type.RIVER))
         );

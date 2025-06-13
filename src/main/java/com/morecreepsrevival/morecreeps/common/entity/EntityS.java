@@ -13,6 +13,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+// TODO: Current disabled
 public class EntityS extends EntityCreepBase implements IMob {
 
     public EntityS(World worldin) {
