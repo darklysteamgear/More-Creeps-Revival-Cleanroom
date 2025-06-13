@@ -38,50 +38,28 @@ import java.lang.reflect.Constructor;
 import java.util.UUID;
 
 public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
+
     private static final DataParameter<String> name = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
-
     private static final DataParameter<Integer> level = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<String> texture = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
-
     private static final DataParameter<Integer> speedBoost = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<String> owner = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
-
     private static final DataParameter<Integer> wanderState = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> experience = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> totalDamage = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<String> creepTypeName = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
-
     private static final DataParameter<Float> modelSize = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.FLOAT);
-
     private static final DataParameter<Integer> skillHealing = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> skillAttack = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> skillDefend = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> skillSpeed = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> interest = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> healTimer = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> healthBoost = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> criticalHitCooldown = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> armor = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
     private static final DataParameter<Integer> unmountTimer = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
-
-    private static final DataParameter<Boolean> noDespawn = EntityDataManager.<Boolean>createKey(EntityCreepBase.class, DataSerializers.BOOLEAN);
-
     private static final DataParameter<Float> hammerSwing = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.FLOAT);
-
     private static final DataParameter<Float> size = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.FLOAT);
 
     protected String baseTexture = "";
@@ -222,8 +200,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
         dataManager.register(armor, 0);
 
         dataManager.register(unmountTimer, 0);
-
-        dataManager.register(noDespawn, Boolean.valueOf(false));
 
         dataManager.register(hammerSwing, 0.0f);
     }
@@ -1131,11 +1107,8 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
     @Override
     protected boolean canDespawn() {
-        if (getCreatureType() == EnumCreatureType.MONSTER && !getNoDespawn() && !isTamed()) {
-            return true;
-        }
-
-        return false;
+        if (isTamed() || isNoDespawnRequired()) return false;
+        return super.canDespawn();
     }
 
     @Override
@@ -1592,14 +1565,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
     protected void setBaseTexture(String baseTextureIn) {
         baseTexture = baseTextureIn;
-    }
-
-    public boolean getNoDespawn() {
-        return ((Boolean) dataManager.get(noDespawn)).booleanValue();
-    }
-
-    public void setNoDespawn(boolean b) {
-        dataManager.set(noDespawn, Boolean.valueOf(b));
     }
 
     @Override

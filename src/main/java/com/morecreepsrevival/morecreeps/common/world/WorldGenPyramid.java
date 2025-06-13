@@ -373,7 +373,7 @@ public class WorldGenPyramid extends WorldGenerator {
 
         guardian.setInitialHealth();
 
-        guardian.setNoDespawn(true);
+        guardian.enablePersistence();
 
         world.spawnEntity(guardian);
 

@@ -133,7 +133,7 @@ public class WorldGenCastle extends WorldGenerator {
 
         king.setInitialHealth();
 
-        king.setNoDespawn(true);
+        king.enablePersistence();
 
         world.spawnEntity(king);
 
@@ -592,7 +592,7 @@ public class WorldGenCastle extends WorldGenerator {
 
         king.setInitialHealth();
 
-        king.setNoDespawn(true);
+        king.enablePersistence();
 
         world.spawnEntity(king);
 

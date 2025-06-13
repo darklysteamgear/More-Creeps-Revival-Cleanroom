@@ -160,7 +160,7 @@ public class EntityPyramidGuardian extends EntityCreepBase {
 
                     evilCreature.setInitialHealth();
 
-                    evilCreature.setNoDespawn(true);
+                    evilCreature.enablePersistence();
 
                     world.spawnEntity(evilCreature);
                 }
@@ -176,7 +176,7 @@ public class EntityPyramidGuardian extends EntityCreepBase {
 
                     mummy.setInitialHealth();
 
-                    mummy.setNoDespawn(true);
+                    mummy.enablePersistence();
 
                     world.spawnEntity(mummy);
                 }
