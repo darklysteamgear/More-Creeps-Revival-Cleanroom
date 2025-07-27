@@ -22,6 +22,11 @@ public class RenderTombstone<T extends EntityTombstone> extends RenderCreep<T> {
         return false;
     }
 
+    @Override
+    protected boolean canRenderName(T entity) {
+        return false;
+    }
+
     public void doRender(@Nullable T entity, double x, double y, double z, float entityYaw, float partialTicks) {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
 
@@ -35,7 +40,7 @@ public class RenderTombstone<T extends EntityTombstone> extends RenderCreep<T> {
 
         String s = "\247fHere lies \2476" + entity.getName();
 
-        String s1 = "\247f a level \2476" + entity.getLevel() + " \247f" + entity.getName();
+        String s1 = "\247f a level \2476" + entity.getLevel() + " \247f" + entity.getDeadCreatureTypeName();
 
         FontRenderer fontRenderer = getFontRendererFromRenderManager();
 

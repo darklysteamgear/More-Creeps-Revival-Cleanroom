@@ -7,19 +7,26 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import javax.annotation.Nullable;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class EntityTombstone extends EntityCreepBase {
 
     private NBTTagCompound additionalProps;
+    private static final DataParameter<String> tombstoneType = EntityDataManager.createKey(EntityTombstone.class, DataSerializers.STRING);
+
     private TombstoneType type;
 
     public EntityTombstone(World worldIn) {
@@ -47,11 +54,48 @@ public class EntityTombstone extends EntityCreepBase {
         setSkillDefend(deadEntity.getSkillDefend());
         setSkillHealing(deadEntity.getSkillHealing());
         setSkillSpeed(deadEntity.getSkillSpeed());
-        type = TombstoneType.getTombstoneType(deadEntity.getClass());
+        if(deadEntity.hasCustomName()) setCustomNameTag(deadEntity.getCustomNameTag());
+        setTombstoneType(TombstoneType.getTombstoneType(deadEntity.getClass()));
 
         deadEntity.onTombstoneCreate(additionalProps);
 
         updateAttributes();
+    }
+
+    @Override
+    public void notifyDataManagerChange(DataParameter<?> parameter) {
+        super.notifyDataManagerChange(parameter);
+        if(parameter.getId() == tombstoneType.getId()) {
+            String tsType = dataManager.get(tombstoneType);
+            setTombstoneType(tsType.isEmpty() ? null : TombstoneType.valueOf(tsType));
+        }
+    }
+
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+        dataManager.register(tombstoneType, type == null ? "" : type.name());
+    }
+
+    @Override
+    public boolean getAlwaysRenderNameTag() {
+        return false;
+    }
+
+    @Override
+    public boolean getAlwaysRenderNameTagForRender() {
+        return false;
+    }
+
+    public String getDeadCreatureTypeName() {
+        EntityEntry entry = this.type == null ? null : EntityRegistry.getEntry(this.type.getEntityClass());
+        String s;
+
+        if (entry == null || entry.getName() == null) {
+            s = "generic";
+        } else s = entry.getName();
+
+        return I18n.translateToLocal("entity." + s + ".name");
     }
 
     @Override
@@ -173,12 +217,19 @@ public class EntityTombstone extends EntityCreepBase {
         super.readEntityFromNBT(compound);
 
         additionalProps = compound.getCompoundTag("MoreCreepsTombstone");
-        this.type = TombstoneType.valueOf(compound.getString("MoreCreepsTombstoneType"));
+        setTombstoneType(TombstoneType.valueOf(compound.getString("MoreCreepsTombstoneType")));
     }
 
     @Override
     public boolean attackEntityFrom(@Nullable DamageSource damageSource, float amt) {
         return false;
+    }
+
+    private void setTombstoneType(TombstoneType type) {
+        if(type == null) return;
+
+        this.type = type;
+        dataManager.set(tombstoneType, type.name());
     }
 
     private enum TombstoneType {
