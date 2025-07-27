@@ -26,7 +26,9 @@ import net.minecraft.scoreboard.Team;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.EnumSkyBlock;
@@ -36,10 +38,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.reflect.Constructor;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
-    private static final DataParameter<String> name = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
     private static final DataParameter<Integer> level = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
     private static final DataParameter<String> texture = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
     private static final DataParameter<Integer> speedBoost = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.VARINT);
@@ -80,11 +82,8 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
     public EntityCreepBase(World worldIn) {
         super(worldIn);
-
         fallDistance = -25.0f;
-
         experienceValue = 5;
-
         updateAttributes();
     }
 
@@ -158,8 +157,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
     @Override
     protected void entityInit() {
         super.entityInit();
-
-        dataManager.register(name, "");
 
         dataManager.register(level, 1);
 
@@ -314,8 +311,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
         props.setFloat("ModelSize", getModelSize());
 
-        props.setString("Name", getCreepName());
-
         props.setString("BaseTexture", baseTexture);
 
         props.setFloat("SizeCreep", dataManager.get(size));
@@ -350,8 +345,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
             props.setString("Owner", owner.toString());
         }
 
-        props.setString("CreepTypeName", getCreepTypeName());
-
         compound.setTag("MoreCreepsEntity", props);
     }
 
@@ -361,10 +354,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
         if (props.hasKey("ModelSize")) {
             setModelSize(props.getFloat("ModelSize"));
-        }
-
-        if (props.hasKey("Name")) {
-            setCreepName(props.getString("Name"));
         }
 
         if (props.hasKey("HealthBoost")) {
@@ -431,10 +420,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
         if (props.hasKey("Owner")) {
             setOwner(UUID.fromString(props.getString("Owner")));
-        }
-
-        if (props.hasKey("CreepTypeName")) {
-            setCreepTypeName(props.getString("CreepTypeName"));
         }
 
         updateAttributes();
@@ -1006,7 +991,7 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
                     EntityPlayer owner = getOwner();
 
                     if (owner != null) {
-                        owner.sendMessage(new TextComponentString("\247b" + getCreepName() + "\2476 has run out of speedboost."));
+                        owner.sendMessage(new TextComponentString("\247b" + getName() + "\2476 has run out of speedboost."));
                     }
                 }
 
@@ -1056,7 +1041,7 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
             EntityPlayer owner = getOwner();
 
             if (owner != null) {
-                owner.sendMessage(new TextComponentString("\2473" + getCreepName() + "\2476 has\247f " + speedBoostLeft + "\2476 minute" + ((speedBoostLeft > 1 ? "s" : "")) + " of speedboost left."));
+                owner.sendMessage(new TextComponentString("\2473" + getName() + "\2476 has\247f " + speedBoostLeft + "\2476 minute" + ((speedBoostLeft > 1 ? "s" : "")) + " of speedboost left."));
             }
         }
     }
@@ -1178,14 +1163,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
         dataManager.set(texture, textureIn);
     }
 
-    public String getCreepName() {
-        return dataManager.get(name);
-    }
-
-    public void setCreepName(String s) {
-        dataManager.set(name, s);
-    }
-
     protected void clearOwner() {
         dataManager.set(owner, "");
     }
@@ -1249,46 +1226,26 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
         // TODO: only spawn trophy when the player gets an achievement
 
-        boolean emptyName = true;
-
-        if (getCreepName().length() < 1 && !world.isRemote) {
-            String[] names = getTamedNames();
-
-            if (names.length > 0) {
-                setCreepName(names[rand.nextInt(names.length)]);
-
-                emptyName = false;
-            } else {
-                setCreepName("");
-            }
-        }
-
         updateAttributes();
-
         setHealth(getMaxHealth());
-
         setWanderState(2);
 
-        SoundEvent tamedSound = getTamedSound();
+        if(!hasCustomName())
+            setCustomNameTag(getTamedNames()[ThreadLocalRandom.current().nextInt(getTamedNames().length)]);
 
+        SoundEvent tamedSound = getTamedSound();
         if (tamedSound != null) {
             playSound(tamedSound, getSoundVolume(), getSoundPitch());
         }
 
         if (!world.isRemote) {
-            if (emptyName) {
-                player.sendMessage(new TextComponentString("You have successfully tamed: \2476" + getCreepTypeName()));
-            } else {
-                player.sendMessage(new TextComponentString("\2476" + getCreepName() + " \247fhas been tamed!"));
-            }
+            player.sendMessage(new TextComponentString("\2476" + getName() + " \247fhas been tamed!"));
         }
     }
 
     public void untame() {
         clearOwner();
-
-        setCreepName("");
-
+        setCustomNameTag("");
         setInterest(0);
     }
 
@@ -1372,7 +1329,7 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
                 EntityPlayer player = getOwner();
 
                 if (player != null) {
-                    player.sendMessage(new TextComponentString("\247b" + getCreepName() + " \247fincreased to level \2476" + lvl + "!"));
+                    player.sendMessage(new TextComponentString("\247b" + getName() + " \247fincreased to level \2476" + lvl + "!"));
                 }
             }
 
@@ -1549,14 +1506,6 @@ public class EntityCreepBase extends EntityCreature implements IEntityOwnable {
 
     public boolean isStackable() {
         return false;
-    }
-
-    public String getCreepTypeName() {
-        return dataManager.get(creepTypeName);
-    }
-
-    protected void setCreepTypeName(String creepTypeNameIn) {
-        dataManager.set(creepTypeName, creepTypeNameIn);
     }
 
     public String getBaseTexture() {

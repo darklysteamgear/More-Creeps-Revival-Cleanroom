@@ -28,7 +28,6 @@ public class EntityHunchback extends EntityCreepBase implements IEntityCanChange
     public EntityHunchback(World world) {
         super(world);
 
-        setCreepTypeName("Hunchback");
 
         baseSpeed = 0.3f;
 

@@ -32,8 +32,6 @@ public class EntityThief extends EntityCreepBase implements IMob, IEntityCanChan
     public EntityThief(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Thief");
-
         creatureType = EnumCreatureType.MONSTER;
 
         baseHealth = (float) rand.nextInt(20) + 10.0f;

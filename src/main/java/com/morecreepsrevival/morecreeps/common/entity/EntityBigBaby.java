@@ -32,8 +32,6 @@ public class EntityBigBaby extends EntityCreepBase implements IMob, IEntityCanCh
     public EntityBigBaby(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Big Baby");
-
         creatureType = EnumCreatureType.MONSTER;
 
         setSize(6.5f, 6.5f);

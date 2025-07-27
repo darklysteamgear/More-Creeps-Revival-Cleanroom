@@ -16,7 +16,6 @@ public class EntityDogHouse extends EntityCreepBase {
     public EntityDogHouse(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Dog House");
 
         creatureType = EnumCreatureType.AMBIENT;
 

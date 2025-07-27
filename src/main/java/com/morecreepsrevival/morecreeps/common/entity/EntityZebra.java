@@ -46,7 +46,6 @@ public class EntityZebra extends EntityCreepBase implements IEntityCanChangeSize
     public EntityZebra(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Zebra");
 
         setModelSize(2.0f);
 

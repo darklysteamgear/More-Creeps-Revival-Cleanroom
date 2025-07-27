@@ -36,7 +36,6 @@ public class EntityHorseHead extends EntityCreepBase {
     public EntityHorseHead(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Horse Head");
 
         setSize(0.6f, 2.0f);
 

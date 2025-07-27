@@ -39,7 +39,6 @@ public class EntityPreacher extends EntityCreepBase implements IMob {
     public EntityPreacher(World world) {
         super(world);
 
-        setCreepTypeName("Preacher");
 
         creatureType = EnumCreatureType.MONSTER;
 

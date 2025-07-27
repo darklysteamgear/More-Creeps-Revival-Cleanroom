@@ -53,7 +53,6 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
     public EntityHotdog(World world) {
         super(world);
 
-        setCreepTypeName("Hotdog");
 
         setSize(0.5f, 0.75f);
 
@@ -76,6 +75,11 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
     @Override
     public int getMaxSpawnedInChunk() {
         return 2;
+    }
+
+    @Override
+    protected String[] getTamedNames() {
+        return names;
     }
 
     @Override
@@ -144,11 +148,6 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
     @Override
     protected void dropItemsOnDeath() {
         dropItem(Items.PORKCHOP, 1);
-    }
-
-    @Override
-    protected String[] getTamedNames() {
-        return names;
     }
 
     @Override
@@ -236,10 +235,10 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
                         } else if (!world.isRemote) {
                             player.sendMessage(new TextComponentString("Your Hotdog must be level 25 to build a Hotdog Heaven."));
 
-                            player.sendMessage(new TextComponentString("\247b" + getCreepName() + " is only level \247f" + getLevel() + "."));
+                            player.sendMessage(new TextComponentString("\247b" + getName() + " is only level \247f" + getLevel() + "."));
                         }
                     } else if (!world.isRemote) {
-                        player.sendMessage(new TextComponentString("\247b" + getCreepName() + "\247f has already built a Hotdog Heaven."));
+                        player.sendMessage(new TextComponentString("\247b" + getName() + "\247f has already built a Hotdog Heaven."));
                     }
 
                     return true;
@@ -249,7 +248,7 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
                     switch (getWanderState()) {
                         case 0:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getCreepName() + "\2476 will \247dWANDER\2476 around and have fun."));
+                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dWANDER\2476 around and have fun."));
                             }
 
                             setWanderState(1);
@@ -257,7 +256,7 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
                             break;
                         case 1:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getCreepName() + "\2476 will \247dFIGHT\2476 and follow you!"));
+                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dFIGHT\2476 and follow you!"));
                             }
 
                             setWanderState(2);
@@ -265,7 +264,7 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
                             break;
                         case 2:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getCreepName() + "\2476 will \247dSTAY\2476 right here."));
+                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dSTAY\2476 right here."));
                             }
 
                             setWanderState(0);

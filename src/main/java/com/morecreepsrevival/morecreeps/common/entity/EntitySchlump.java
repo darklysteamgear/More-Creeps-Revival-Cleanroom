@@ -40,7 +40,6 @@ public class EntitySchlump extends EntityCreepBase {
     public EntitySchlump(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Schlump");
 
         baseSpeed = 0.0d;
 

@@ -23,7 +23,6 @@ public class EntityGooGoat extends EntityCreepBase implements IEntityCanChangeSi
     public EntityGooGoat(World world) {
         super(world);
 
-        setCreepTypeName("Goo Goat");
 
         setModelSize(0.7f);
 

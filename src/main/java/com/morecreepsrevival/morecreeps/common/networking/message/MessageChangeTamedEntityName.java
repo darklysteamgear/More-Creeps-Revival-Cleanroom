@@ -52,7 +52,7 @@ public class MessageChangeTamedEntityName implements IMessage {
                     EntityCreepBase creep = (EntityCreepBase) entity;
 
                     if (creep.isPlayerOwner(player) && !message.name.isEmpty()) {
-                        creep.setCreepName(message.name);
+                        creep.setCustomNameTag(message.name);
                     }
                 }
             });

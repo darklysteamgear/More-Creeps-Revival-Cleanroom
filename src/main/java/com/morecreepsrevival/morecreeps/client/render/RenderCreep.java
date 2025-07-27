@@ -44,7 +44,7 @@ public class RenderCreep<T extends EntityCreepBase> extends RenderLiving<T> {
             s += "\2473* \247f";
         }
 
-        s += entity.getCreepName();
+        s += entity.getName();
 
         if (entity.getHealth() < (entity.getMaxHealth() / 2)) {
             s += " \247c * WOUNDED *";

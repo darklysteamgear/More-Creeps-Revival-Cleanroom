@@ -36,8 +36,6 @@ public class EntitySnowDevil extends EntityCreepBase implements IMob, IEntityCan
     public EntitySnowDevil(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Snow Devil");
-
         creatureType = EnumCreatureType.MONSTER;
 
         setSize(width * 1.6f, height * 1f);

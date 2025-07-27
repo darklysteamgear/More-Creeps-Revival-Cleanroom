@@ -41,7 +41,6 @@ public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanCh
     public EntityRocketGiraffe(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Rocket Giraffe");
 
         setSize(1.5f, 4.0f);
 
@@ -53,15 +52,15 @@ public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanCh
     }
 
     @Override
-    protected String[] getTamedNames() {
-        return names;
-    }
-
-    @Override
     protected void entityInit() {
         super.entityInit();
 
         dataManager.register(tamedCookies, rand.nextInt(7) + 1);
+    }
+
+    @Override
+    protected String[] getTamedNames() {
+        return names;
     }
 
     @Override

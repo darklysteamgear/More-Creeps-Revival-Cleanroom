@@ -28,7 +28,6 @@ public class EntityCastleKing extends EntityCreepBase {
     public EntityCastleKing(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Castle King");
 
         baseSpeed = 0.0d;
 

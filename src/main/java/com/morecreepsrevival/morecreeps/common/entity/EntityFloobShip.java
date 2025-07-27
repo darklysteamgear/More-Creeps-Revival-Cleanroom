@@ -36,7 +36,6 @@ public class EntityFloobShip extends EntityCreepBase implements IMob {
     public EntityFloobShip(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Floob Ship");
 
         creatureType = EnumCreatureType.MONSTER;
 

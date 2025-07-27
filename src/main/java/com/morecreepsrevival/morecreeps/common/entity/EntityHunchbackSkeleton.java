@@ -31,7 +31,6 @@ public class EntityHunchbackSkeleton extends EntityCreepBase implements IRangedA
     public EntityHunchbackSkeleton(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Hunchback Skeleton");
 
         creatureType = EnumCreatureType.MONSTER;
 

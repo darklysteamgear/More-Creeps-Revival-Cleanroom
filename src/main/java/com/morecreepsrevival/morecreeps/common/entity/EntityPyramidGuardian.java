@@ -20,7 +20,6 @@ public class EntityPyramidGuardian extends EntityCreepBase {
     public EntityPyramidGuardian(World world) {
         super(world);
 
-        setCreepTypeName("Pyramid Guardian");
 
         setSize(0.4f, 0.4f);
 

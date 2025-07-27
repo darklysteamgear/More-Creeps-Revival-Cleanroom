@@ -29,7 +29,6 @@ public class EntityVHS extends EntityCreepBase implements IEntityCanChangeSize {
     public EntityVHS(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Walking VHS");
         creatureType = EnumCreatureType.MONSTER;
 
         baseSpeed = 0.35d;

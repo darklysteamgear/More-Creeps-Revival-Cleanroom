@@ -62,9 +62,6 @@ public class EntityCamel extends EntityCreepBase implements IEntityCanChangeSize
 
     public EntityCamel(World worldIn) {
         super(worldIn);
-
-        setCreepTypeName("Camel");
-
         setSize(width * 1.5f, height * 4.0f);
 
         setModelSize(1.75f);

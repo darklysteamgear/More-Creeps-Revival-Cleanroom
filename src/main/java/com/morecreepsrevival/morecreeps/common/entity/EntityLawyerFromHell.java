@@ -35,7 +35,6 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
     public EntityLawyerFromHell(World world) {
         super(world);
 
-        setCreepTypeName("Lawyer From Hell");
 
         creatureType = EnumCreatureType.MONSTER;
 

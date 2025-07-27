@@ -44,7 +44,6 @@ public class EntityManDog extends EntityCreepBase {
     public EntityManDog(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Mandog");
 
         baseHealth = 45.0f;
 

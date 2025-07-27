@@ -1,6 +1,8 @@
 package com.morecreepsrevival.morecreeps.client.gui;
 
 import com.morecreepsrevival.morecreeps.common.entity.EntityCreepBase;
+import com.morecreepsrevival.morecreeps.common.entity.EntityGuineaPig;
+import com.morecreepsrevival.morecreeps.common.entity.EntityHotdog;
 import com.morecreepsrevival.morecreeps.common.helpers.InventoryHelper;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageLevelUpGuineaPigSkill;
@@ -110,9 +112,9 @@ public class GuiTamableEntityTraining extends GuiScreen {
 
         drawWorldBackground(1);
 
-        String creepType = entity.getCreepTypeName();
+        String creepType = entity.getName();
 
-        drawCenteredString(fontRenderer, "\2476" + entity.getCreepName() + "\'s TRAINING", width / 2, height / 4 - 40, 0xffffff);
+        drawCenteredString(fontRenderer, "\2476" + entity.getName() + "\'s TRAINING", width / 2, height / 4 - 40, 0xffffff);
 
         drawCenteredString(fontRenderer, "\247f" + creepType + " LEVEL: \2473" + entity.getLevel(), width / 2, height / 4 - 25, 0xffffff);
 
@@ -163,83 +165,76 @@ public class GuiTamableEntityTraining extends GuiScreen {
     private void levelSkill(String skill) {
         int requiredLevel = entity.getRequiredLevelForSkill(skill);
 
-        switch (entity.getCreepTypeName()) {
-            case "Guinea Pig":
-                if (InventoryHelper.getItemCount(mc.player.inventory, Items.WHEAT) < 5) {
-                    mc.player.playSound(CreepsSoundHandler.guineaPigNoWheatSound, 1.0f, 1.0f);
+        if(entity instanceof EntityGuineaPig) {
+            if (InventoryHelper.getItemCount(mc.player.inventory, Items.WHEAT) < 5) {
+                mc.player.playSound(CreepsSoundHandler.guineaPigNoWheatSound, 1.0f, 1.0f);
 
-                    return;
+                return;
+            }
+
+            if (entity.getLevel() < requiredLevel) {
+                switch (requiredLevel) {
+                    case 5:
+                        mc.player.playSound(CreepsSoundHandler.guineaPig5LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    case 10:
+                        mc.player.playSound(CreepsSoundHandler.guineaPig10LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    case 15:
+                        mc.player.playSound(CreepsSoundHandler.guineaPig15LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    case 20:
+                        mc.player.playSound(CreepsSoundHandler.guineaPig20LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    default:
+                        break;
                 }
 
-                if (entity.getLevel() < requiredLevel) {
-                    switch (requiredLevel) {
-                        case 5:
-                            mc.player.playSound(CreepsSoundHandler.guineaPig5LevelSound, 1.0f, 1.0f);
+                return;
+            }
 
-                            break;
-                        case 10:
-                            mc.player.playSound(CreepsSoundHandler.guineaPig10LevelSound, 1.0f, 1.0f);
+            CreepsPacketHandler.INSTANCE.sendToServer(new MessageLevelUpGuineaPigSkill(entity.getEntityId(), skill));
 
-                            break;
-                        case 15:
-                            mc.player.playSound(CreepsSoundHandler.guineaPig15LevelSound, 1.0f, 1.0f);
+            mc.player.playSound(CreepsSoundHandler.guineaPigTrainSound, 1.0f, 1.0f);
+        } else if(entity instanceof EntityHotdog) {
+            if (InventoryHelper.getItemCount(mc.player.inventory, Items.BONE) < 5) {
+                mc.player.playSound(CreepsSoundHandler.hotdogNoBonesSound, 1.0f, 1.0f);
 
-                            break;
-                        case 20:
-                            mc.player.playSound(CreepsSoundHandler.guineaPig20LevelSound, 1.0f, 1.0f);
+                return;
+            }
 
-                            break;
-                        default:
-                            break;
-                    }
+            if (entity.getLevel() < requiredLevel) {
+                switch (requiredLevel) {
+                    case 5:
+                        mc.player.playSound(CreepsSoundHandler.hotdog5LevelSound, 1.0f, 1.0f);
 
-                    return;
+                        break;
+                    case 10:
+                        mc.player.playSound(CreepsSoundHandler.hotdog10LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    case 15:
+                        mc.player.playSound(CreepsSoundHandler.hotdog15LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    case 20:
+                        mc.player.playSound(CreepsSoundHandler.hotdog20LevelSound, 1.0f, 1.0f);
+
+                        break;
+                    default:
+                        break;
                 }
 
-                CreepsPacketHandler.INSTANCE.sendToServer(new MessageLevelUpGuineaPigSkill(entity.getEntityId(), skill));
+                return;
+            }
 
-                mc.player.playSound(CreepsSoundHandler.guineaPigTrainSound, 1.0f, 1.0f);
+            CreepsPacketHandler.INSTANCE.sendToServer(new MessageLevelUpHotdogSkill(entity.getEntityId(), skill));
 
-                break;
-            case "Hotdog":
-                if (InventoryHelper.getItemCount(mc.player.inventory, Items.BONE) < 5) {
-                    mc.player.playSound(CreepsSoundHandler.hotdogNoBonesSound, 1.0f, 1.0f);
-
-                    return;
-                }
-
-                if (entity.getLevel() < requiredLevel) {
-                    switch (requiredLevel) {
-                        case 5:
-                            mc.player.playSound(CreepsSoundHandler.hotdog5LevelSound, 1.0f, 1.0f);
-
-                            break;
-                        case 10:
-                            mc.player.playSound(CreepsSoundHandler.hotdog10LevelSound, 1.0f, 1.0f);
-
-                            break;
-                        case 15:
-                            mc.player.playSound(CreepsSoundHandler.hotdog15LevelSound, 1.0f, 1.0f);
-
-                            break;
-                        case 20:
-                            mc.player.playSound(CreepsSoundHandler.hotdog20LevelSound, 1.0f, 1.0f);
-
-                            break;
-                        default:
-                            break;
-                    }
-
-                    return;
-                }
-
-                CreepsPacketHandler.INSTANCE.sendToServer(new MessageLevelUpHotdogSkill(entity.getEntityId(), skill));
-
-                mc.player.playSound(CreepsSoundHandler.hotdogTrainSound, 1.0f, 1.0f);
-
-                break;
-            default:
-                break;
+            mc.player.playSound(CreepsSoundHandler.hotdogTrainSound, 1.0f, 1.0f);
         }
     }
 }

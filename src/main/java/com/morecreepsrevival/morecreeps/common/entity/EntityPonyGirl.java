@@ -28,7 +28,6 @@ public class EntityPonyGirl extends EntityCreepBase {
     public EntityPonyGirl(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Pony Girl");
 
         setSize(0.6f, 0.6f);
 

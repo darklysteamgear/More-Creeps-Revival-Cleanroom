@@ -44,7 +44,6 @@ public class EntityPony extends EntityCreepBase {
     public EntityPony(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Pony");
 
         baseHealth = 6.0f;
 
@@ -62,6 +61,11 @@ public class EntityPony extends EntityCreepBase {
         dataManager.register(sicky, 0);
 
         dataManager.register(ponyBreed, 0);
+    }
+
+    @Override
+    protected String[] getTamedNames() {
+        return names;
     }
 
     public boolean getAdult() {
@@ -91,11 +95,6 @@ public class EntityPony extends EntityCreepBase {
     @Override
     protected String[] getAvailableTextures() {
         return textures;
-    }
-
-    @Override
-    protected String[] getTamedNames() {
-        return names;
     }
 
     @Override

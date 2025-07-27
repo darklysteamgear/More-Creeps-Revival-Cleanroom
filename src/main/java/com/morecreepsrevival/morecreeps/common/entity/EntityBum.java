@@ -41,8 +41,6 @@ public class EntityBum extends EntityCreepBase implements IMob, IEntityCanChange
     public EntityBum(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Bum");
-
         creatureType = EnumCreatureType.MONSTER;
 
         baseSpeed = 0.25d;

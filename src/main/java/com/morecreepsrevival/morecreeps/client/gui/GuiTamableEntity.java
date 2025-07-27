@@ -44,7 +44,7 @@ public class GuiTamableEntity extends GuiScreen {
 
         nameScreen.setMaxStringLength(31);
         nameScreen.setCanLoseFocus(true);
-        nameScreen.setText(entity.getCreepName());
+        nameScreen.setText(entity.getName());
     }
 
     @Override
@@ -117,7 +117,7 @@ public class GuiTamableEntity extends GuiScreen {
 
         drawWorldBackground(1);
 
-        drawCenteredString(fontRenderer, entity.getCreepTypeName().toUpperCase() + " COMMAND CENTER", width / 2, height / 4 - 40, 0xffffff);
+        drawCenteredString(fontRenderer, entity.getName().toUpperCase() + " COMMAND CENTER", width / 2, height / 4 - 40, 0xffffff);
 
         nameScreen.drawTextBox();
 

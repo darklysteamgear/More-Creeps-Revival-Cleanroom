@@ -23,7 +23,6 @@ public class EntityFloob extends EntityCreepBase implements IRangedAttackMob, IM
     public EntityFloob(World worldIn) {
         super(worldIn);
 
-        setCreepTypeName("Floob");
 
         creatureType = EnumCreatureType.MONSTER;
 

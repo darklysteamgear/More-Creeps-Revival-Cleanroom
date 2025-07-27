@@ -56,15 +56,15 @@ public class MessageSetEntityWanderState implements IMessage {
 
                         switch (message.wanderState) {
                             case 0:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getCreepName() + "\2476 will \247dSTAY\2476 right here."));
+                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dSTAY\2476 right here."));
 
                                 break;
                             case 1:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getCreepName() + "\2476 will \247dWANDER\2476 around and have fun."));
+                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dWANDER\2476 around and have fun."));
 
                                 break;
                             case 2:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getCreepName() + "\2476 will \247dFIGHT\2476 and follow you!"));
+                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dFIGHT\2476 and follow you!"));
 
                                 break;
                             default:

@@ -28,7 +28,6 @@ public class EntityBabyMummy extends EntityCreepBase implements IMob {
         super(world);
 
         setSize(0.6f, 0.6f);
-        setCreepTypeName("Baby Mummy");
 
         creatureType = EnumCreatureType.MONSTER;
         spawnOnlyAtNight = true;
