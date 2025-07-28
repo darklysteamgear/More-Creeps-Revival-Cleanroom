@@ -5,6 +5,7 @@ import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockTorch;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -83,12 +84,6 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
             "ThreeToe"
     };
 
-    private static final String[] levelNames = {
-            "Guinea Pig", "A nothing pig", "An inexperienced pig", "Trainee", "Private", "Private First Class", "Corporal", "Sergeant", "Staff Sergeant", "Sergeant First Class",
-            "Master Sergeant", "First Sergeant", "Sergeant Major", "Command Sergeant Major", "Second Lieutenant", "First Lieutenant", "Captain", "Major", "Lieutenant Colonel", "Colonel",
-            "General of the Pig Army", "General of the Pig Army"
-    };
-
     private static final int[] levelDamages = {
             0, 200, 600, 1000, 1500, 2000, 2700, 3500, 4400, 5400,
             6600, 7900, 9300, 10800, 12400, 14100, 15800, 17600, 19500, 21500,
@@ -122,9 +117,7 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
         super.writeEntityToNBT(compound);
 
         NBTTagCompound props = compound.getCompoundTag("MoreCreepsGuineaPig");
-
         props.setBoolean("HotelBuilt", getHotelBuilt());
-
         compound.setTag("MoreCreepsGuineaPig", props);
     }
 
@@ -658,7 +651,7 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
 
     @Override
     public String getLevelName() {
-        return levelNames[getLevel()];
+        return I18n.format("other.morecreeps.guineapig.level." + getLevel());
     }
 
     @Override
@@ -672,11 +665,11 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
     }
 
     public boolean getHotelBuilt() {
-        return ((Boolean) dataManager.get(hotelBuilt)).booleanValue();
+        return dataManager.get(hotelBuilt);
     }
 
     protected void setHotelBuilt(boolean b) {
-        dataManager.set(hotelBuilt, Boolean.valueOf(b));
+        dataManager.set(hotelBuilt, b);
     }
 
     @Override

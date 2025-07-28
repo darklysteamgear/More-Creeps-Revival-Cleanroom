@@ -4,6 +4,7 @@ import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTallGrass;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -36,12 +37,6 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
             "Weiner", "Wendon the Weiner", "Wallace the Weiner", "William the Weiner", "Terrance", "Elijah", "Good Boy", "Boy", "Girl", "Tennis Shoe",
             "Rusty", "Mean Joe Green", "Lawrence", "Foxy", "SlyFoxHound", "Leroy Brown",
             "Mickey", "Holly", "Yeontan"
-    };
-
-    private static final String[] levelNames = {
-            "Just A Pup", "Hotdog", "A Dirty Dog", "An Alley Dog", "Scrapyard Puppy", "Army Dog", "Private", "Private First Class", "Corporal", "Sergeant",
-            "Staff Sergeant", "Sergeant First Class", "Master Segeant", "First Sergeant", "Sergeant Major", "Command Sergeant Major", "Second Lieutenant", "First Lieutenant", "Captain", "Major",
-            "Lieutenant Colonel", "Colonel", "General of the Hotdog Army", "General of the Hotdog Army", "Sparky the Wonder Pooch", "Sparky the Wonder Pooch"
     };
 
     private static final int[] levelDamages = {
@@ -172,7 +167,7 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
 
     @Override
     public String getLevelName() {
-        return levelNames[getLevel()];
+        return I18n.format("other.morecreeps.hotdog.level." + getLevel());
     }
 
     @Override

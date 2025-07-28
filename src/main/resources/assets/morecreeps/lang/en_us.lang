@@ -171,3 +171,57 @@ other.morecreeps.welcome.31=Some Prisoners are just evil and will attack you on 
 other.morecreeps.welcome.32=Evil Scientists will conduct experiments that sometimes backfire.
 other.morecreeps.welcome.33=Your pet loses a level if resurrected with a LifeGem.
 other.morecreeps.welcome.34=Sneaky Sal will sometimes sell goods at a discount.
+
+# Tamed
+other.morecreeps.tamedcount=You have successfully tamed: §6%s
+
+# Hotdog
+other.morecreeps.hotdog.level.0=Just A Pup
+other.morecreeps.hotdog.level.1=Hotdog
+other.morecreeps.hotdog.level.2=A Dirty Dog
+other.morecreeps.hotdog.level.3=An Alley Dog
+other.morecreeps.hotdog.level.4=Scrapyard Puppy
+other.morecreeps.hotdog.level.5=Army Dog
+other.morecreeps.hotdog.level.6=Private
+other.morecreeps.hotdog.level.7=Private First Class
+other.morecreeps.hotdog.level.8=Corporal
+other.morecreeps.hotdog.level.9=Sergeant
+other.morecreeps.hotdog.level.10=Staff Sergeant
+other.morecreeps.hotdog.level.11=Sergeant First Class
+other.morecreeps.hotdog.level.12=Master Segeant
+other.morecreeps.hotdog.level.13=First Sergeant
+other.morecreeps.hotdog.level.14=Sergeant Major
+other.morecreeps.hotdog.level.15=Command Sergeant Major
+other.morecreeps.hotdog.level.16=Second Lieutenant
+other.morecreeps.hotdog.level.17=First Lieutenant
+other.morecreeps.hotdog.level.18=Captain
+other.morecreeps.hotdog.level.19=Major
+other.morecreeps.hotdog.level.20=Lieutenant Colonel
+other.morecreeps.hotdog.level.21=Colonel
+other.morecreeps.hotdog.level.22=General of the Hotdog Army
+other.morecreeps.hotdog.level.23=General of the Hotdog Army
+other.morecreeps.hotdog.level.24=Sparky the Wonder Pooch
+other.morecreeps.hotdog.level.25=Sparky the Wonder Pooch
+
+# Guinea Pig
+other.morecreeps.guineapig.level.0=Guinea Pig
+other.morecreeps.guineapig.level.1=A nothing pig
+other.morecreeps.guineapig.level.2=An inexperienced pig
+other.morecreeps.guineapig.level.3=Trainee
+other.morecreeps.guineapig.level.4=Private
+other.morecreeps.guineapig.level.5=Private First Class
+other.morecreeps.guineapig.level.6=Corporal
+other.morecreeps.guineapig.level.7=Sergeant
+other.morecreeps.guineapig.level.8=Staff Sergeant
+other.morecreeps.guineapig.level.9=Sergeant First Class
+other.morecreeps.guineapig.level.10=Master Sergeant
+other.morecreeps.guineapig.level.11=First Sergeant
+other.morecreeps.guineapig.level.12=Sergeant Major
+other.morecreeps.guineapig.level.13=Command Sergeant Major
+other.morecreeps.guineapig.level.14=Second Lieutenant
+other.morecreeps.guineapig.level.15=First Lieutenant
+other.morecreeps.guineapig.level.16=Captain
+other.morecreeps.guineapig.level.17=Major
+other.morecreeps.guineapig.level.18=Lieutenant Colonel
+other.morecreeps.guineapig.level.19=Colonel
+other.morecreeps.guineapig.level.20=General of the Pig Army
