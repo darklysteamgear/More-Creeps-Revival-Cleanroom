@@ -68,7 +68,7 @@ public class EntityFloob extends EntityCreepBase implements IRangedAttackMob, IM
 
         targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
 
-        if (MoreCreepsConfig.floobTargetVillagers) {
+        if (MoreCreepsConfig.Miscellaneous.floobTargetVillagers) {
             targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, true));
         }
     }

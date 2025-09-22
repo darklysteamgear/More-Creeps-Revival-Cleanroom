@@ -228,7 +228,7 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
                     suckMoney(player);
                 }
 
-                if (!world.isRemote && MoreCreepsConfig.jailActive && fine >= 2500 && !getUndead() && JailManager.buildJail(player, world, rand)) {
+                if (!world.isRemote && MoreCreepsConfig.WorldGen.jailActive && fine >= 2500 && !getUndead() && JailManager.buildJail(player, world, rand)) {
                     capability.setFine(0);
 
                     CreepsPacketHandler.INSTANCE.sendTo(new MessageSetLawyerFine(0), (EntityPlayerMP) player);

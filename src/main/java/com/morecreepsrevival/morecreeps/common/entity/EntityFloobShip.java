@@ -334,7 +334,7 @@ public class EntityFloobShip extends EntityCreepBase implements IMob {
     public void onDeath(@Nonnull DamageSource cause) {
         super.onDeath(cause);
 
-        if (!world.isRemote && dataManager.get(lifespan) > 0 && MoreCreepsConfig.floobShipExplode) {
+        if (!world.isRemote && dataManager.get(lifespan) > 0 && MoreCreepsConfig.Miscellaneous.floobShipExplode) {
             world.createExplosion(null, posX, posY, posZ, 8.0f, true);
         }
     }

@@ -87,8 +87,6 @@ public class MoreCreepsAndWeirdos {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        MoreCreepsConfig.preInit(event);
-
         MinecraftForge.EVENT_BUS.register(new CreepsEntityHandler());
         CreepsItemHandler.initItems();
 
