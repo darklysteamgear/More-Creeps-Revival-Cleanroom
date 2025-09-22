@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.entity.Entity;
@@ -133,10 +134,10 @@ public class EntityManDog extends EntityCreepBaseOwnable {
 
                 setTamedFood(getTamedFood() - 1);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 if (getTamedFood() < 1) {
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     tame(player);
                 }

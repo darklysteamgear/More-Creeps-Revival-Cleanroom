@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.IRangedAttackMob;
@@ -121,8 +122,7 @@ public class EntityHunchbackSkeleton extends EntityCreepBaseOwnable implements I
         updateTexture();
 
         if (getTimeLeft() < 1) {
-            smoke();
-
+            EffectHelper.smoke(world, this, rand, false);
             setDead();
         }
     }

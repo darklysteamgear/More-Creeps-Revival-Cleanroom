@@ -3,6 +3,7 @@ package com.morecreepsrevival.morecreeps.common.entity;
 import com.morecreepsrevival.morecreeps.common.capabilities.ILawyerFine;
 import com.morecreepsrevival.morecreeps.common.capabilities.LawyerFineProvider;
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageSetLawyerFine;
@@ -385,7 +386,7 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
                 int randAmt = rand.nextInt(4) + 3;
 
                 for (int i = 0; i < randAmt; i++) {
-                    smoke2();
+                    EffectHelper.smoke2(world, this, rand);
 
                     EntityLawyerFromHell lawyer = new EntityLawyerFromHell(world);
 
@@ -415,7 +416,7 @@ public class EntityLawyerFromHell extends EntityCreepBase implements IMob, IEnti
             }
         }
 
-        smoke2();
+        EffectHelper.smoke2(world, this, rand);
 
         super.onDeath(cause);
     }

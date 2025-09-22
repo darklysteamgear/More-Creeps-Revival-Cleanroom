@@ -4,6 +4,7 @@ import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIFollowOwne
 import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIFollowOwnerTarget;
 import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIOwnerHurtByTarget;
 import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIOwnerHurtTarget;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntity;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -432,8 +433,7 @@ public class EntityCreepBaseOwnable extends EntityCreepBase implements IEntityOw
     }
 
     protected void giveSpeedBoost(int speedBoost) {
-        smokePlain();
-
+        EffectHelper.smoke(world, this, rand, true);
         setSpeedBoost(Math.max(0, getSpeedBoost()) + speedBoost);
 
         updateMoveSpeed();

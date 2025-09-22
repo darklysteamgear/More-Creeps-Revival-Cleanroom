@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStairs;
@@ -232,7 +233,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
                     return true;
                 } else if (item == Item.getItemFromBlock(Blocks.RED_FLOWER) || item == Item.getItemFromBlock(Blocks.YELLOW_FLOWER)) {
-                    smokePlain();
+                    EffectHelper.smoke(world, this, rand, true);
 
                     switch (getWanderState()) {
                         case 0:
@@ -277,7 +278,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -289,7 +290,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -301,7 +302,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -313,7 +314,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -354,7 +355,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
             } else if (item == Items.BONE) {
                 feed(player, 10, 15);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 
@@ -362,7 +363,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
             } else if (item == Items.PORKCHOP) {
                 feed(player, 15, 30);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 
@@ -370,7 +371,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
             } else if (item == Items.COOKED_PORKCHOP) {
                 feed(player, 25, 55);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 

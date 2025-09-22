@@ -2,6 +2,7 @@ package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
@@ -303,8 +304,7 @@ public class EntityZebra extends EntityCreepBaseOwnable implements IEntityCanCha
                         tame(player);
                     }
 
-                    smoke();
-
+                    EffectHelper.smoke(world, this, rand, false);
                     return true;
                 }
             } else if (!world.isRemote) {

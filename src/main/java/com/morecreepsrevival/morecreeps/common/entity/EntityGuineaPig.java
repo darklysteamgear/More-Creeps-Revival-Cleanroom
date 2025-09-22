@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockColored;
@@ -213,7 +214,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
                     return true;
                 } else if (item == Item.getItemFromBlock(Blocks.RED_FLOWER) || item == Item.getItemFromBlock(Blocks.YELLOW_FLOWER)) {
-                    smokePlain();
+                    EffectHelper.smoke(world, this, rand, true);
 
                     switch (getWanderState()) {
                         case 0:
@@ -258,7 +259,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -270,7 +271,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -282,7 +283,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -294,7 +295,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
                     setHealth(getMaxHealth());
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, 1.0f, (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
 
@@ -335,7 +336,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
             } else if (item == Items.WHEAT || item == Items.MELON) {
                 feed(player, 10, 15);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 
@@ -343,7 +344,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
             } else if (item == Items.COOKIE) {
                 feed(player, 15, 30);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 
@@ -351,7 +352,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
             } else if (item == Items.APPLE) {
                 feed(player, 25, 55);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 
@@ -359,7 +360,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
             } else if (item == Items.GOLDEN_APPLE) {
                 feed(player, 75, 111);
 
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 itemStack.shrink(1);
 

@@ -236,7 +236,6 @@ public class EntitySneakySal extends EntityCreepBase implements IRangedAttackMob
         }
     }
 
-    @Override
     public void smoke() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 10; j++) {
@@ -283,7 +282,6 @@ public class EntitySneakySal extends EntityCreepBase implements IRangedAttackMob
     @Override
     public void onDeath(@Nonnull DamageSource cause) {
         smoke();
-
         super.onDeath(cause);
     }
 

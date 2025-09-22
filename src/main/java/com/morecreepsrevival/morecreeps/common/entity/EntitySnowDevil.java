@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
@@ -139,7 +140,7 @@ public class EntitySnowDevil extends EntityCreepBaseOwnable implements IMob, IEn
 
                     itemStack.shrink(1);
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     return true;
                 }

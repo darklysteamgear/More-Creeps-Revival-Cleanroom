@@ -193,7 +193,6 @@ public class EntitySchlump extends EntityCreepBaseOwnable {
         return (i > 25);
     }
 
-    @Override
     public void smoke() {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {

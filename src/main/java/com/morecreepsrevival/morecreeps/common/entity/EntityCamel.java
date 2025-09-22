@@ -2,6 +2,7 @@ package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
@@ -344,10 +345,10 @@ public class EntityCamel extends EntityCreepBaseOwnable implements IEntityCanCha
                         if (!world.isRemote) {
                             player.sendMessage(new TextComponentString("You need \2476" + cookieCount + " cookie" + ((cookieCount == 1) ? "" : "s") + " \247fto tame this lovely camel."));
                         }
-                        smokePlain();
+                        EffectHelper.smoke(world, this, rand, true);
                     } else {
                         tame(player);
-                        smoke();
+                        EffectHelper.smoke(world, this, rand, false);
                     }
 
                     return true;

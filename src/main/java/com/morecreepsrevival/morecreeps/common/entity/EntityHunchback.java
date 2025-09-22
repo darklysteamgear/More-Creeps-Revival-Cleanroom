@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIFollowOwner;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -107,9 +108,8 @@ public class EntityHunchback extends EntityCreepBaseOwnable implements IEntityCa
         if (isEntityAlive()) {
             if (isTamed()) {
                 if (itemStack.getItem() == Items.BONE) {
-                    smoke();
-
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
+                    EffectHelper.smoke(world, this, rand, false);
 
                     playSound(CreepsSoundHandler.guineaPigArmorSound, getSoundVolume(), getSoundPitch());
 
@@ -138,7 +138,7 @@ public class EntityHunchback extends EntityCreepBaseOwnable implements IEntityCa
                     return true;
                 }
             } else if (itemStack.getItem() == Items.CAKE || Item.getIdFromItem(itemStack.getItem()) == 92) {
-                smoke();
+                EffectHelper.smoke(world, this, rand, false);
 
                 tame(player);
 

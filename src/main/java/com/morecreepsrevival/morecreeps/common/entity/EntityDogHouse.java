@@ -131,7 +131,6 @@ public class EntityDogHouse extends EntityCreepBase {
         return flag;
     }
 
-    @Override
     public void smoke() {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {

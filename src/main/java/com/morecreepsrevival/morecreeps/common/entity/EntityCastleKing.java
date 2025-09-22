@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.entity.ai.EntityCreepAIAttackMelee;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.helpers.InventoryHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
@@ -80,7 +81,7 @@ public class EntityCastleKing extends EntityCreepBase {
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-        smoke2();
+        EffectHelper.smoke2(world, this, rand);
 
         if (dataManager.get(intruderCheck) > 0) {
             dataManager.set(intruderCheck, dataManager.get(intruderCheck) - 1);

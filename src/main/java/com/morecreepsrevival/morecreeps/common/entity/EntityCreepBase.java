@@ -464,34 +464,6 @@ public class EntityCreepBase extends EntityCreature {
         return flag;
     }
 
-    public void spawnTrophy(Entity entity) {
-        EffectHelper.spawnTrophy(world, entity);
-    }
-
-    public void spawnTrophy() {
-        spawnTrophy(this);
-    }
-
-    public void explode() {
-        EffectHelper.explode(world, this);
-    }
-
-    public void smoke(boolean plain) {
-        EffectHelper.smoke(world, this, rand, plain);
-    }
-
-    public void smoke() {
-        smoke(false);
-    }
-
-    public void smokePlain() {
-        smoke(true);
-    }
-
-    public void smoke2() {
-        EffectHelper.smoke2(world, this, rand);
-    }
-
     @Override
     public void onDeath(@Nonnull DamageSource cause) {
         if (!dead && !world.isRemote) {

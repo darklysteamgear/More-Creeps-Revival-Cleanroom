@@ -2,6 +2,7 @@ package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
 import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
@@ -144,8 +145,7 @@ public class EntityRocketGiraffe extends EntityCreepBaseOwnable implements IEnti
 
     @Override
     public void onDeath(@Nonnull DamageSource damageSource) {
-        smoke();
-
+        EffectHelper.smoke(world, this, rand, false);
         super.onDeath(damageSource);
     }
 
@@ -328,7 +328,7 @@ public class EntityRocketGiraffe extends EntityCreepBaseOwnable implements IEnti
                         tame(player);
                     }
 
-                    smoke();
+                    EffectHelper.smoke(world, this, rand, false);
 
                     return true;
                 }

@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.helpers.EffectHelper;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.entity.Entity;
@@ -159,7 +160,7 @@ public class EntityTombstone extends EntityCreepBaseOwnable {
 
         player.swingArm(hand);
 
-        smoke();
+        EffectHelper.smoke(world, this, rand, false);
 
         if (!world.isRemote && this.type != null) {
             EntityCreepBaseOwnable entity = this.type.getNewInstance().apply(getEntityWorld());
