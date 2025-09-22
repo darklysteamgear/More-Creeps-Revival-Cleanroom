@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
@@ -30,9 +31,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanChangeSize {
-    private static final String[] names = {
-            "Rory", "Stan", "Clarence", "FirePower", "Lightning", "Rocket Jockey", "Rocket Ralph", "Tim"
-    };
 
     private static final DataParameter<Integer> tamedCookies = EntityDataManager.createKey(EntityRocketGiraffe.class, DataSerializers.VARINT);
 
@@ -60,7 +58,7 @@ public class EntityRocketGiraffe extends EntityCreepBase implements IEntityCanCh
 
     @Override
     protected String[] getTamedNames() {
-        return names;
+        return MoreCreepsConfig.TamedNames.entityRocketGiraffeNames;
     }
 
     @Override

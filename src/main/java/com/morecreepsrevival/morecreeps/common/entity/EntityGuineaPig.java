@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockColored;
@@ -40,48 +41,6 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
             "textures/entity/ggpig8",
             "textures/entity/ggpig9",
             "textures/entity/ggpiga"
-    };
-
-    private static final String[] names = {
-            "Sugar", "Clover", "CoCo", "Sprinkles", "Mr. Rabies", "Stinky", "The Incredible Mr. CoCoPants", "Butchie", "Lassie", "Fuzzy",
-            "Nicholas", "Natalie", "Pierre", "Priscilla", "Mrs. McGillicutty", "Dr. Tom Jones", "Peter the Rat", "Wiskers", "Penelope", "Sparky",
-            "Tinkles", "Ricardo", "Jimothy", "Captain Underpants", "CoCo Van Gough", "Chuck Norris", "PeeWee", "Quasimodo", "ZSA ZSA", "Yum Yum",
-            "Deputy Dawg", "Henrietta Pussycat", "Bob Dog", "King Friday", "Jennifer", "The Situation", "Prince Charming", "Sid", "Sunshine", "Bubbles",
-            "Carl", "Snowy", "Dorf", "Chilly Willy", "Angry Bob", "George W. Bush", "Ted Lange from The Love Boat", "Notch", "Frank", "A Very Young Pig",
-            "Blaster", "Darwin", "Ruggles", "Chang", "Spaz", "Fluffy", "Fuzzy", "Charrlotte", "Tootsie", "Mary",
-            "Caroline", "Michelle", "Sandy", "Peach", "Scrappy", "Roxanne", "James the Pest", "Lucifer", "Shaniqua", "Wendy",
-            "Zippy", "Prescott Pig", "Pimpin' Pig", "Big Daddy", "Little Butchie", "The Force", "The Handler", "Little Louie", "Satin", "Sparkly Puff",
-            "Dr. Chews", "Pickles", "Longtooth", "Jeffry", "Pedro the Paunchy", "Wee Willy Wiskers", "Tidy Smith", "Johnson", "Big Joe", "Tiny Mackeral",
-            "Wonderpig", "Wee Wonderpig", "The Polish Baron", "Inconceivable", "Double Danny Dimples", "Jackie Jones", "Pistol", "Tiny Talker", "Strum", "Disco the Pig",
-            "Banjo", "Fingers", "Clean Streak", "Little Sweet", "Fern", "Youngblood", "Lazy Cottonball", "Foxy", "SlyFoxHound",
-            "Namjoon", "Seokjin", "Yoongi", "Hoseok", "Jimin", "Taehyung", "Jungkook", "Suga", "Jinnie",
-            "Halsey",
-            "Rose", "Lisa", "Jennie", "Jisoo",
-            "Momo", "Mina", "Sana",
-            "BamBam",
-            "Yuna",
-            "Soobin",
-            "Solar", "Hwasa",
-            "Hyuna",
-            "DAWN",
-            "Mini",
-            "Kai",
-            "GlockBoyKari",
-            "Wonho",
-            "ㅇㅅㅇ",
-            "Joongie", "Sannie", "Jongho", "Mingi", "Wooyoung", "Yunho", "Hwa", "Yeosang",
-            "Binnie", "Felix", "Chan", "Han",
-            "MINO",
-            "G-Dragon",
-            "BOBBY",
-            "Joshua", "Vernon",
-            "Yuto",
-            "Stan Loona",
-            "Jannabi",
-            "Irene", "Joy",
-            "Mr. Chu",
-            "Rap Monster",
-            "ThreeToe"
     };
 
     private static final int[] levelDamages = {
@@ -143,7 +102,7 @@ public class EntityGuineaPig extends EntityCreepBase implements IEntityCanChange
 
     @Override
     protected String[] getTamedNames() {
-        return names;
+        return MoreCreepsConfig.TamedNames.guineaPigNames;
     }
 
     @Override

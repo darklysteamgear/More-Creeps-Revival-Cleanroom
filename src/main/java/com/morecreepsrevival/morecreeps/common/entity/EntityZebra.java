@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageOpenGuiTamableEntityName;
@@ -33,11 +34,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class EntityZebra extends EntityCreepBase implements IEntityCanChangeSize {
-    private static final String[] names = {
-            "Stanley", "Cid", "Hunchy", "The Heat", "Herman the Hump", "Dr. Hump", "Little Lousie", "Spoony G", "Mixmaster C", "The Maestro",
-            "Duncan the Dude", "Charlie Camel", "Chip", "Charles Angstrom III", "Mr. Charles", "Cranky Carl", "Carl the Rooster", "Tiny the Peach", "Desert Dan", "Dungby",
-            "Doofus"
-    };
 
     private static final DataParameter<Integer> tamedCookies = EntityDataManager.createKey(EntityZebra.class, DataSerializers.VARINT);
 
@@ -74,7 +70,7 @@ public class EntityZebra extends EntityCreepBase implements IEntityCanChangeSize
 
     @Override
     protected String[] getTamedNames() {
-        return names;
+        return MoreCreepsConfig.TamedNames.entityZebraNames;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStairs;
@@ -30,13 +31,6 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
             "textures/entity/hotdg1",
             "textures/entity/hotdg2",
             "textures/entity/hotdg3"
-    };
-
-    private static final String[] names = {
-            "Pogo", "Spot", "King", "Prince", "Bosco", "Ralph", "Wendy", "Trixie", "Bowser", "The Heat",
-            "Weiner", "Wendon the Weiner", "Wallace the Weiner", "William the Weiner", "Terrance", "Elijah", "Good Boy", "Boy", "Girl", "Tennis Shoe",
-            "Rusty", "Mean Joe Green", "Lawrence", "Foxy", "SlyFoxHound", "Leroy Brown",
-            "Mickey", "Holly", "Yeontan"
     };
 
     private static final int[] levelDamages = {
@@ -74,7 +68,7 @@ public class EntityHotdog extends EntityCreepBase implements IEntityCanChangeSiz
 
     @Override
     protected String[] getTamedNames() {
-        return names;
+        return MoreCreepsConfig.TamedNames.entityHotDogNames;
     }
 
     @Override
