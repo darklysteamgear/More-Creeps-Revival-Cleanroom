@@ -34,10 +34,10 @@ public class GuiTamableEntity extends GuiScreen {
         buttonList.clear();
         byte byte0 = -16;
 
-        buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 108 + byte0, 98, 20, "\2476XX\247f FIGHT \2476XX"));
-        buttonList.add(new GuiButton(3, width / 2 + 2, height / 4 + 108 + byte0, 98, 20, "\2476|| \247f STAY \2476||"));
-        buttonList.add(new GuiButton(4, width / 2 - 100, height / 4 + 128 + byte0, 98, 20, "\2476<<\247f WANDER \2476>>"));
-        buttonList.add(new GuiButton(5, width / 2 + 2, height / 4 + 128 + byte0, 98, 20, "\2476-[\247f TRAIN \2476]-"));
+        buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 108 + byte0, 98, 20, "§6XX§f FIGHT §6XX"));
+        buttonList.add(new GuiButton(3, width / 2 + 2, height / 4 + 108 + byte0, 98, 20, "§6|| §f STAY §6||"));
+        buttonList.add(new GuiButton(4, width / 2 - 100, height / 4 + 128 + byte0, 98, 20, "§6<<§f WANDER §6>>"));
+        buttonList.add(new GuiButton(5, width / 2 + 2, height / 4 + 128 + byte0, 98, 20, "§6-[§f TRAIN §6]-"));
         buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 158 + byte0, 98, 20, "Save"));
         buttonList.add(new GuiButton(1, width / 2 + 2, height / 4 + 158 + byte0, 98, 20, I18n.format("gui.cancel")));
         nameScreen = new GuiTextField(1, fontRenderer, width / 2 - 100, height / 4 - 20, 200, 20);
@@ -121,14 +121,14 @@ public class GuiTamableEntity extends GuiScreen {
 
         nameScreen.drawTextBox();
 
-        drawString(fontRenderer, "\2476LEVEL  \247f" + entity.getLevel(), (width / 2 - 100) + k, height / 4 + 28 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6LEVEL  §f" + entity.getLevel(), (width / 2 - 100) + k, height / 4 + 28 + byte0, 0xff8d13);
 
-        drawString(fontRenderer, "\2476NEXT LVL  \247f" + entity.getTotalDamage() + "\2473/\247f" + entity.getLevelDamage(), width / 2 + 2 + k, height / 4 + 28 + byte0, 0xff8d13);
-        drawString(fontRenderer, "\2476HEALTH  \247f" + entity.getHealth() + "\2473/\247f" + entity.getMaxHealth(), (width / 2 - 100) + k, height / 4 + 43 + byte0, 0xff8d13);
-        drawString(fontRenderer, "\2476EXPERIENCE  \247f" + entity.getExperience(), width / 2 + 2 + k, height / 4 + 43 + byte0, 0xff8d13);
-        drawString(fontRenderer, "\2476ATTACK  \247f" + entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), (width / 2 - 100) + k, height / 4 + 58 + byte0, 0xff8d13);
-        drawString(fontRenderer, "\2476SPEED  \247f" + entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), width / 2 + 2 + k, height / 4 + 58 + byte0, 0xff8d13);
-        drawCenteredString(fontRenderer, "\2473" + entity.getLevelName(), width / 2 + 2 + k, height / 4 + 78 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6NEXT LVL  §f" + entity.getTotalDamage() + "§3/§f" + entity.getLevelDamage(), width / 2 + 2 + k, height / 4 + 28 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6HEALTH  §f" + entity.getHealth() + "§3/§f" + entity.getMaxHealth(), (width / 2 - 100) + k, height / 4 + 43 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6EXPERIENCE  §f" + entity.getExperience(), width / 2 + 2 + k, height / 4 + 43 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6ATTACK  §f" + entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), (width / 2 - 100) + k, height / 4 + 58 + byte0, 0xff8d13);
+        drawString(fontRenderer, "§6SPEED  §f" + entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), width / 2 + 2 + k, height / 4 + 58 + byte0, 0xff8d13);
+        drawCenteredString(fontRenderer, "§3" + entity.getLevelName(), width / 2 + 2 + k, height / 4 + 78 + byte0, 0xff8d13);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

@@ -25,7 +25,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCanChangeSize {
@@ -191,7 +191,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
                 if (item == Items.DIAMOND) {
                     if (isRiding()) {
                         if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("Put your Guinea Pig down before building the Guinea Pig Hotel!"));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.hotel.down"));
                         }
                     } else if (!getHotelBuilt()) {
                         if (getLevel() >= 20) {
@@ -204,12 +204,12 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
                                 itemStack.shrink(1);
                             }
                         } else if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("Your Guinea Pig must be level 20 to build a Hotel."));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.hotel.level"));
 
-                            player.sendMessage(new TextComponentString("\247b" + getName() + " is only level \247f" + getLevel() + "."));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.currentlevel", getName(), getLevel()));
                         }
                     } else if (!world.isRemote) {
-                        player.sendMessage(new TextComponentString("\247b" + getName() + "\247f has already built a Hotel."));
+                        player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.hotel.already"));
                     }
 
                     return true;
@@ -219,7 +219,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
                     switch (getWanderState()) {
                         case 0:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dWANDER\2476 around and have fun."));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.1", getName()));
                             }
 
                             setWanderState(1);
@@ -227,7 +227,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
                             break;
                         case 1:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dFIGHT\2476 and follow you!"));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.2", getName()));
                             }
 
                             setWanderState(2);
@@ -235,7 +235,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
                             break;
                         case 2:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dSTAY\2476 right here."));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.0", getName()));
                             }
 
                             setWanderState(0);
@@ -398,7 +398,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
             playSound(CreepsSoundHandler.guineaPigHotelSound, getSoundVolume(), getSoundPitch());
 
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("GUINEA PIG HOTEL BUILT!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.hotel.built"));
             }
 
             for (int h = 0; h < (height + 4); h++) {
@@ -569,7 +569,7 @@ public class EntityGuineaPig extends EntityCreepBaseOwnable implements IEntityCa
 
             return true;
         } else if (!world.isRemote) {
-            player.sendMessage(new TextComponentString("Too many obstructions, choose another spot!"));
+            player.sendMessage(new TextComponentTranslation("entity.morecreeps.guinea_pig.heaven.obstructions"));
         }
 
         return false;

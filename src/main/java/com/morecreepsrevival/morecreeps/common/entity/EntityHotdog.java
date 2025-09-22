@@ -22,7 +22,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanChangeSize {
@@ -210,7 +210,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                 if (item == Items.DIAMOND) {
                     if (isRiding()) {
                         if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("Put your Hotdog down before building the Hotdog Heaven!"));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.down"));
                         }
                     } else if (!getHeavenBuilt()) {
                         if (getLevel() >= 25) {
@@ -223,12 +223,11 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                                 itemStack.shrink(1);
                             }
                         } else if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("Your Hotdog must be level 25 to build a Hotdog Heaven."));
-
-                            player.sendMessage(new TextComponentString("\247b" + getName() + " is only level \247f" + getLevel() + "."));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.level"));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.currentlevel", getName(), getLevel()));
                         }
                     } else if (!world.isRemote) {
-                        player.sendMessage(new TextComponentString("\247b" + getName() + "\247f has already built a Hotdog Heaven."));
+                        player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.already", getName()));
                     }
 
                     return true;
@@ -238,7 +237,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                     switch (getWanderState()) {
                         case 0:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dWANDER\2476 around and have fun."));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.1", getName()));
                             }
 
                             setWanderState(1);
@@ -246,7 +245,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                             break;
                         case 1:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dFIGHT\2476 and follow you!"));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.2", getName()));
                             }
 
                             setWanderState(2);
@@ -254,7 +253,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                             break;
                         case 2:
                             if (!world.isRemote) {
-                                player.sendMessage(new TextComponentString("\2473" + getName() + "\2476 will \247dSTAY\2476 right here."));
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.0", getName()));
                             }
 
                             setWanderState(0);
@@ -413,7 +412,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
 
     private boolean buildHeaven(EntityPlayer player, int x, int y, int z) {
         if (y > 95) {
-            player.sendMessage(new TextComponentString("You are too far up to build Hotdog Heaven!"));
+            player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.toofar"));
 
             return false;
         }
@@ -442,7 +441,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
             playSound(CreepsSoundHandler.hotdogHeavenSound, getSoundVolume(), getSoundPitch());
 
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("HOT DOG HEAVEN HAS BEEN BUILT!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.built"));
             }
 
             world.setBlockState(new BlockPos(x, y, z), Blocks.PLANKS.getDefaultState());
@@ -679,7 +678,7 @@ public class EntityHotdog extends EntityCreepBaseOwnable implements IEntityCanCh
                 chest4.setInventorySlotContents(i, new ItemStack(Items.DIAMOND, 1));
             }
         } else if (!world.isRemote) {
-            player.sendMessage(new TextComponentString("Too many obstructions, choose another spot!"));
+            player.sendMessage(new TextComponentTranslation("entity.morecreeps.hotdog.heaven.obstructions"));
         }
 
         return false;

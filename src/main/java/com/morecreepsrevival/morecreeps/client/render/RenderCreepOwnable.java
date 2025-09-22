@@ -46,17 +46,17 @@ public class RenderCreepOwnable<T extends EntityCreepBaseOwnable> extends Render
         String s = "";
 
         if (entity.getSpeedBoost() > 0) {
-            s += "\2473* \247f";
+            s += "§3* §f";
         }
 
         s += entity.getName();
 
         if (entity.getHealth() < (entity.getMaxHealth() / 2)) {
-            s += " \247c * WOUNDED *";
+            s += " §c * WOUNDED *";
         }
 
         if (entity.canLevelUp()) {
-            s += " \2475<\2476" + entity.getLevel() + "\2475>";
+            s += " §5<§6" + entity.getLevel() + "§5>";
         }
 
         if (s.isEmpty()) {

@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -56,16 +57,13 @@ public class MessageSetEntityWanderState implements IMessage {
 
                         switch (message.wanderState) {
                             case 0:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dSTAY\2476 right here."));
-
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.0", creep.getName()));
                                 break;
                             case 1:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dWANDER\2476 around and have fun."));
-
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.1", creep.getName()));
                                 break;
                             case 2:
-                                player.sendMessage(new TextComponentString("\2473" + creep.getName() + "\2476 will \247dFIGHT\2476 and follow you!"));
-
+                                player.sendMessage(new TextComponentTranslation("entity.morecreeps.wanderstate.2", creep.getName()));
                                 break;
                             default:
                                 break;

@@ -15,6 +15,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -144,13 +145,13 @@ public class EntityTombstone extends EntityCreepBaseOwnable {
 
         if (itemStack.isEmpty() || itemStack.getItem() != CreepsItemHandler.lifeGem) {
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("Use a \2474LifeGem\247f on this tombstone to bring your pet back to life!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.tombstone.lifegem"));
             }
 
             return true;
         } else if (!isPlayerOwner(player)) {
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("This is not your tamed pet!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.tombstone.notyour"));
             }
 
             return true;

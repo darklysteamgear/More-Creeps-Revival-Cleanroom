@@ -27,10 +27,10 @@ public class GuiTamableEntityTraining extends GuiScreen {
         buttonList.clear();
         byte byte0 = -16;
 
-        buttonList.add(new GuiButton(2, width / 2 - 110, height / 4 + 8 + byte0, 98, 20, "\2476<-\247f ATTACK \2476->"));
-        buttonList.add(new GuiButton(3, width / 2 + 12, height / 4 + 8 + byte0, 98, 20, "\2476>> \247f DEFENSE \2476<<"));
-        buttonList.add(new GuiButton(4, width / 2 - 110, height / 4 + 65 + byte0, 98, 20, "\2476++\247f HEALING \2476++"));
-        buttonList.add(new GuiButton(5, width / 2 + 12, height / 4 + 65 + byte0, 98, 20, "\2476((\247f SPEED \2476))"));
+        buttonList.add(new GuiButton(2, width / 2 - 110, height / 4 + 8 + byte0, 98, 20, "§6<-§f ATTACK §6->"));
+        buttonList.add(new GuiButton(3, width / 2 + 12, height / 4 + 8 + byte0, 98, 20, "§6>> §f DEFENSE §6<<"));
+        buttonList.add(new GuiButton(4, width / 2 - 110, height / 4 + 65 + byte0, 98, 20, "§6++§f HEALING §6++"));
+        buttonList.add(new GuiButton(5, width / 2 + 12, height / 4 + 65 + byte0, 98, 20, "§6((§f SPEED §6))"));
         buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 158 + byte0, 98, 20, "BACK"));
         buttonList.add(new GuiButton(1, width / 2 + 2, height / 4 + 158 + byte0, 98, 20, "DONE"));
     }
@@ -114,9 +114,9 @@ public class GuiTamableEntityTraining extends GuiScreen {
 
         String creepType = entity.getName();
 
-        drawCenteredString(fontRenderer, "\2476" + entity.getName() + "\'s TRAINING", width / 2, height / 4 - 40, 0xffffff);
+        drawCenteredString(fontRenderer, "§6" + entity.getName() + "\'s TRAINING", width / 2, height / 4 - 40, 0xffffff);
 
-        drawCenteredString(fontRenderer, "\247f" + creepType + " LEVEL: \2473" + entity.getLevel(), width / 2, height / 4 - 25, 0xffffff);
+        drawCenteredString(fontRenderer, "§f" + creepType + " LEVEL: §3" + entity.getLevel(), width / 2, height / 4 - 25, 0xffffff);
 
         drawString(fontRenderer, buildStat(entity.getSkillAttack()), width / 2 - 107 + k, height / 4 + 38 + byte0, 0xff8d13);
 
@@ -128,15 +128,15 @@ public class GuiTamableEntityTraining extends GuiScreen {
 
         switch (creepType) {
             case "Guinea Pig":
-                drawCenteredString(fontRenderer, "\247fWHEAT REMAINING: \2473" + InventoryHelper.getItemCount(mc.player.inventory, Items.WHEAT), width / 2 + 2 + k, height / 4 + 120 + byte0, 0xff8d13);
+                drawCenteredString(fontRenderer, "§fWHEAT REMAINING: §3" + InventoryHelper.getItemCount(mc.player.inventory, Items.WHEAT), width / 2 + 2 + k, height / 4 + 120 + byte0, 0xff8d13);
 
-                drawCenteredString(fontRenderer, "\2476Each level costs five wheat", width / 2 + 2 + k, height / 4 + 140 + byte0, 0xff8d13);
+                drawCenteredString(fontRenderer, "§6Each level costs five wheat", width / 2 + 2 + k, height / 4 + 140 + byte0, 0xff8d13);
 
                 break;
             case "Hotdog":
-                drawCenteredString(fontRenderer, "\247fBONES REMAINING: \2473" + InventoryHelper.getItemCount(mc.player.inventory, Items.BONE), width / 2 + 2 + k, height / 4 + 120 + byte0, 0xff8d13);
+                drawCenteredString(fontRenderer, "§fBONES REMAINING: §3" + InventoryHelper.getItemCount(mc.player.inventory, Items.BONE), width / 2 + 2 + k, height / 4 + 120 + byte0, 0xff8d13);
 
-                drawCenteredString(fontRenderer, "\2476Each level costs five bones", width / 2 + 2 + k, height / 4 + 140 + byte0, 0xff8d13);
+                drawCenteredString(fontRenderer, "§6Each level costs five bones", width / 2 + 2 + k, height / 4 + 140 + byte0, 0xff8d13);
 
                 break;
             default:
@@ -150,12 +150,12 @@ public class GuiTamableEntityTraining extends GuiScreen {
         StringBuilder builder = new StringBuilder();
 
         for (int j = 0; j < i; j++) {
-            builder.append("\2473(*) ");
+            builder.append("§3(*) ");
         }
 
         if (i < 5) {
             for (int k = i; k < 5; k++) {
-                builder.append("\2478(*) ");
+                builder.append("§8(*) ");
             }
         }
 

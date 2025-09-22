@@ -29,6 +29,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -422,7 +423,7 @@ public class EntityCreepBaseOwnable extends EntityCreepBase implements IEntityOw
                     EntityPlayer owner = getOwner();
 
                     if (owner != null) {
-                        owner.sendMessage(new TextComponentString("\247b" + getName() + "\2476 has run out of speedboost."));
+                        owner.sendMessage(new TextComponentTranslation("entity.morecreeps.speed_boost", getName()));
                     }
                 }
 
@@ -455,7 +456,7 @@ public class EntityCreepBaseOwnable extends EntityCreepBase implements IEntityOw
             EntityPlayer owner = getOwner();
 
             if (owner != null) {
-                owner.sendMessage(new TextComponentString("\2473" + getName() + "\2476 has\247f " + speedBoostLeft + "\2476 minute" + ((speedBoostLeft > 1 ? "s" : "")) + " of speedboost left."));
+                owner.sendMessage(new TextComponentTranslation("entity.morecreeps.speed_boost.left", getName(), speedBoostLeft));
             }
         }
     }
@@ -571,7 +572,7 @@ public class EntityCreepBaseOwnable extends EntityCreepBase implements IEntityOw
         }
 
         if (!world.isRemote) {
-            player.sendMessage(new TextComponentString("\2476" + getName() + " \247fhas been tamed!"));
+            player.sendMessage(new TextComponentTranslation("entity.morecreeps.tamed", getName()));
         }
     }
 
@@ -657,7 +658,7 @@ public class EntityCreepBaseOwnable extends EntityCreepBase implements IEntityOw
                 EntityPlayer player = getOwner();
 
                 if (player != null) {
-                    player.sendMessage(new TextComponentString("\247b" + getName() + " \247fincreased to level \2476" + lvl + "!"));
+                    player.sendMessage(new TextComponentTranslation("entity.morecreeps.level_increase", getName(), lvl));
                 }
             }
 

@@ -26,6 +26,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -322,7 +323,7 @@ public class EntityRocketGiraffe extends EntityCreepBaseOwnable implements IEnti
 
                     if (cookieCount > 0) {
                         if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("You need \2476" + cookieCount + " cookie" + ((cookieCount == 1) ? "" : "s") + " \247fto tame this Rocket Giraffe."));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.rocket_giraffe.cookie", cookieCount));
                         }
                     } else {
                         tame(player);
@@ -335,7 +336,7 @@ public class EntityRocketGiraffe extends EntityCreepBaseOwnable implements IEnti
             } else if (!world.isRemote) {
                 int cookieCount = getTamedCookies();
 
-                player.sendMessage(new TextComponentString("You need \2476" + cookieCount + " cookie" + ((cookieCount == 1) ? "" : "s") + " \247fto tame this Rocket Giraffe."));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.rocket_giraffe.cookie", cookieCount));
             }
         }
 
@@ -346,7 +347,7 @@ public class EntityRocketGiraffe extends EntityCreepBaseOwnable implements IEnti
     public boolean canPlayerRide(EntityPlayer player) {
         if (isPlayerOwner(player) && getModelSize() < 1.0f) {
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("Your Rocket Giraffe is too small to ride!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.rocket_giraffe.small"));
             }
 
             return false;

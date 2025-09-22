@@ -38,9 +38,9 @@ public class RenderTombstone<T extends EntityTombstone> extends RenderCreepOwnab
 
         float f3 = 0.01666667f * f2;
 
-        String s = "\247fHere lies \2476" + entity.getName();
+        String s = "§fHere lies §6" + entity.getName();
 
-        String s1 = "\247f a level \2476" + entity.getLevel() + " \247f" + entity.getDeadCreatureTypeName();
+        String s1 = "§f a level §6" + entity.getLevel() + " §f" + entity.getDeadCreatureTypeName();
 
         FontRenderer fontRenderer = getFontRendererFromRenderManager();
 

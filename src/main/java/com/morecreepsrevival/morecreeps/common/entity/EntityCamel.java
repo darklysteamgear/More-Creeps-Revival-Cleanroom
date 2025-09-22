@@ -28,6 +28,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -343,7 +344,7 @@ public class EntityCamel extends EntityCreepBaseOwnable implements IEntityCanCha
 
                     if (cookieCount > 0) {
                         if (!world.isRemote) {
-                            player.sendMessage(new TextComponentString("You need \2476" + cookieCount + " cookie" + ((cookieCount == 1) ? "" : "s") + " \247fto tame this lovely camel."));
+                            player.sendMessage(new TextComponentTranslation("entity.morecreeps.camel.cookie", cookieCount));
                         }
                         EffectHelper.smoke(world, this, rand, true);
                     } else {
@@ -356,7 +357,7 @@ public class EntityCamel extends EntityCreepBaseOwnable implements IEntityCanCha
             } else if (!world.isRemote) {
                 int cookieCount = getTamedCookies();
 
-                player.sendMessage(new TextComponentString("You need \2476" + cookieCount + " cookie" + ((cookieCount == 1) ? "" : "s") + " \247fto tame this lovely camel."));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.camel.cookie", cookieCount));
             }
         }
 
@@ -367,7 +368,7 @@ public class EntityCamel extends EntityCreepBaseOwnable implements IEntityCanCha
     public boolean canPlayerRide(EntityPlayer player) {
         if (isPlayerOwner(player) && getModelSize() < 1.0f) {
             if (!world.isRemote) {
-                player.sendMessage(new TextComponentString("Your Camel is too small to ride!"));
+                player.sendMessage(new TextComponentTranslation("entity.morecreeps.camel.small!"));
             }
 
             return false;
