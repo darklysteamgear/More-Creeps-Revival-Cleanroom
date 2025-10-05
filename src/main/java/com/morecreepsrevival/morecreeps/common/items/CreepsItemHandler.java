@@ -82,7 +82,7 @@ public class CreepsItemHandler {
     public static Item vhsTape2;
     public static Item vHammer;
 
-    public static ArmorMaterial ZEBRA_ARMOR = EnumHelper.addArmorMaterial("zebra_armor", "zebra_armor", 25, new int[]{2, 4, 6, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
+    public static ArmorMaterial ZEBRA_ARMOR = EnumHelper.addArmorMaterial("zebra_armor", MoreCreepsAndWeirdos.modid + ":zebra_armor", 25, new int[]{2, 4, 6, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
     public static void initItems() {
         // Achievements
