@@ -89,7 +89,7 @@ public class GuiSneakySal extends GuiScreen {
 
         mc.renderEngine.bindTexture(backgroundTexture);
 
-        drawTexturedModalRect(20, 20, 0, 0, width + 400, height);
+        drawTexturedModalRect(0, 0, 0, 0, width + 400, height);
 
         drawCenteredString(fontRenderer, "§5******* §fWELCOME TO SAL'S SHOP §5*******", width / 2, height / 4 - 40, 0xffffff);
 
