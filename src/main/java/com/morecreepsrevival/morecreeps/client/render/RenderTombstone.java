@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.I18n;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
@@ -38,15 +39,15 @@ public class RenderTombstone<T extends EntityTombstone> extends RenderCreepOwnab
 
         float f3 = 0.01666667f * f2;
 
-        String s = "§fHere lies §6" + entity.getName();
+        String s = I18n.format("entity.morecreeps.tombstone.title.1", entity.getName());
 
-        String s1 = "§f a level §6" + entity.getLevel() + " §f" + entity.getDeadCreatureTypeName();
+        String s1 = I18n.format("entity.morecreeps.tombstone.title.2",  entity.getLevel(), entity.getDeadCreatureTypeName());
 
         FontRenderer fontRenderer = getFontRendererFromRenderManager();
 
         GlStateManager.pushMatrix();
 
-        GlStateManager.translate((float) x, (float) y + 1.1f, (float) z);
+        GlStateManager.translate((float) x, (float) y + 1.4f, (float) z);
 
         GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
 
@@ -80,38 +81,22 @@ public class RenderTombstone<T extends EntityTombstone> extends RenderCreepOwnab
             i = fontRenderer.getStringWidth(s1);
         }
 
-        int j = i / 2;
-
-        byte byte0 = -25;
-
-        bufferBuilder.pos(-j - 1, -1 + i, 0.0d).color(0.0f, 0.0f, 0.0f, 0.25f).endVertex();
-
-        bufferBuilder.pos(-j - 1, 8 + i, 0.0d).color(0.0f, 0.0f, 0.0f, 0.25f).endVertex();
-
-        bufferBuilder.pos(j + 1, 8 + i, 0.0d).color(0.0f, 0.0f, 0.0f, 0.25f).endVertex();
-
-        bufferBuilder.pos(j + 1, -1 + i, 0.0d).color(0.0f, 0.0f, 0.0f, 0.25f).endVertex();
-
+        int j = i / 2; // Half-width for centering
+        bufferBuilder.pos(-j - 1, -1, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+        bufferBuilder.pos(-j - 1, 8 + 10, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+        bufferBuilder.pos(j + 1, 8 + 10, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+        bufferBuilder.pos(j + 1, -1, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
         tessellator.draw();
-
         GlStateManager.enableTexture2D();
-
-        fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, byte0 + 2, 0x20ffffff);
-
-        fontRenderer.drawString(s1, -fontRenderer.getStringWidth(s1) / 2, byte0 + 12, 0x20ffffff);
+        
+        GlStateManager.color(1F, 1F, 1F, 1F);
+        fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, 0, 0xffffff);
+        fontRenderer.drawString(s1, -fontRenderer.getStringWidth(s1) / 2, 10, 0xffffff);
 
         GlStateManager.enableDepth();
-
         GlStateManager.depthMask(true);
-
-        fontRenderer.drawString(s, -fontRenderer.getStringWidth(s) / 2, byte0 + 2, -1);
-
-        fontRenderer.drawString(s1, -fontRenderer.getStringWidth(s1) / 2, byte0 + 12, -1);
-
         GlStateManager.enableLighting();
-
         GlStateManager.disableBlend();
-
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 
         GlStateManager.popMatrix();
