@@ -51,6 +51,7 @@ public class EntityShrink extends EntityThrowable {
     public EntityShrink(World world, EntityLivingBase entity) {
         this(world);
 
+        thrower = entity;
         setLocationAndAngles(entity.posX, entity.posY + (double) entity.getEyeHeight(), entity.posZ, entity.rotationYaw, entity.rotationPitch);
 
         posX -= MathHelper.cos((rotationYaw / 180.0f) * (float) Math.PI) * 0.16f;
@@ -115,7 +116,7 @@ public class EntityShrink extends EntityThrowable {
 
     @Override
     protected void onImpact(@Nonnull RayTraceResult rtr) {
-        if (isDead || rtr.entityHit instanceof EntityPlayer || world.isRemote)
+        if (isDead || rtr.entityHit instanceof EntityPlayer || rtr.entityHit == thrower || world.isRemote)
             return;
 
         // If the entity hit is null, it has hit a block
