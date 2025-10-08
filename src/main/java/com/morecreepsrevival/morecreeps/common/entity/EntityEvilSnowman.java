@@ -104,37 +104,38 @@ public class EntityEvilSnowman extends EntityCreepBase implements IMob, IEntityC
             motionY -= 0.0020000000949949026d;
         }
 
-        int x = MathHelper.floor(posX);
-
-        int y = MathHelper.floor(getEntityBoundingBox().minY);
-
-        int z = MathHelper.floor(posZ);
-
-        if (world.getBlockState(new BlockPos(x, y - 1, z)).getBlock() == Blocks.SNOW) {
-            setModelSize(getModelSize() + 0.001f);
+        if (world.getBlockState(new BlockPos(posX, posY - 1, posZ)).getBlock() == Blocks.SNOW ||
+                world.getBlockState(new BlockPos(posX, posY, posZ)).getBlock() == Blocks.SNOW_LAYER) {
+            grow();
         } else {
-            setModelSize(getModelSize() + 0.002f);
+            shrink();
         }
 
         if (inWater) {
-            setModelSize(getModelSize() - 0.02f);
+            shrink();
         }
 
-        if (getModelSize() > 6.0f) {
-            setModelSize(6.0f);
-        }
-
-        float f = getModelSize();
-
-        if (updateSizeTime-- < 1) {
-            setSize(f * 0.45f, f * 2.0f);
-
-            updateSizeTime = 100;
-        }
-
-        if (f < 0.050000000000000003d) {
+        if (currentSize < 0.050000000000000003d) {
             setDead();
         }
+    }
+
+    private void grow() {
+        this.growModelSize(0.001f, maxGrowth());
+
+        // Calculate the difference between the old model size and new
+        // Then, apply it to the hitbox size.
+        float growthDifference = 100 - (currentSize * 100f / this.getModelSize());
+        this.growHitboxSize(this.currentSize / 100f * growthDifference);
+    }
+
+    private void shrink() {
+        this.shrinkModelSize(0.001f, this.maxShrink());
+
+        // Calculate the difference between the old model size and new
+        // Then, apply it to the hitbox size.
+        float shrinkDifference = 100 - (getModelSize() * 100f / currentSize);
+        this.shrinkHitboxSize(currentSize / 100f * shrinkDifference);
     }
 
     @Override
