@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.client.helpers.ClientCreepsUtil;
 import com.morecreepsrevival.morecreeps.common.helpers.CreepsUtil;
 import com.morecreepsrevival.morecreeps.common.items.CreepsItemHandler;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
@@ -101,13 +102,14 @@ public class EntityTrophy extends EntityCreepBase {
         this.motionZ = 0f;
         if (this.motionY > 0f) this.motionY = 0f;
 
-        if (world.isRemote) return;
-
         if (dataManager.get(partyTime) > 1) {
-            dataManager.set(partyTime, dataManager.get(partyTime) - 1);
-
-            spawnConfetti();
+            // Server-side = decreate partyTime
+            // Client-side = spawn confetti
+            if(!world.isRemote) dataManager.set(partyTime, dataManager.get(partyTime) - 1);
+            else spawnConfetti();
         }
+
+        if (world.isRemote) return;
 
         if (dataManager.get(trophyLifespan) > 0) {
             dataManager.set(trophyLifespan, dataManager.get(trophyLifespan) - 1);
@@ -143,7 +145,7 @@ public class EntityTrophy extends EntityCreepBase {
 
             Item selecteditem = Item.REGISTRY.getRandomObject(rand);
 
-            Particle particle = CreepsUtil.SpawnEatingParticle(
+            Particle particle = ClientCreepsUtil.spawnEatingParticle(
                     world,
                     posX, posY + 1, posZ,
                     movDir.x * 0.11F, 0.6D, movDir.y * 0.11F,
