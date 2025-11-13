@@ -103,7 +103,7 @@ public class EntityTrophy extends EntityCreepBase {
         if (this.motionY > 0f) this.motionY = 0f;
 
         if (dataManager.get(partyTime) > 1) {
-            // Server-side = decreate partyTime
+            // Server-side = decrease partyTime
             // Client-side = spawn confetti
             if(!world.isRemote) dataManager.set(partyTime, dataManager.get(partyTime) - 1);
             else spawnConfetti();
