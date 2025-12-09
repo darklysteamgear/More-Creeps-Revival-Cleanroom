@@ -132,7 +132,8 @@ public class CreepsEntityHandler {
 
         for (BiomeDictionary.Type type : types) {
             for (Biome biome : BiomeDictionary.getBiomes(type)) {
-                if ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft")) {
+                //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft")) is used now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
+                if ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft")) {
                     biomes.add(biome);
                 }
             }
@@ -163,8 +164,8 @@ public class CreepsEntityHandler {
                     break;
                 }
             }
-
-            if (!skip && ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))) {
+            //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) is used now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
+            if (!skip && ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
                 biomes.add(biome);
             }
         }

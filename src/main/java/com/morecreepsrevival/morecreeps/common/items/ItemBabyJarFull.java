@@ -50,7 +50,8 @@ public class ItemBabyJarFull extends CreepsItem {
             float f7 = f4 * f5;
             float f9 = f3 * f5;
             double d5 = 5d;
-            Vec3d vec3d1 = vec3d.addVector((double) f7 * d5, (double) f6 * d5, (double) f9 * d5);
+            //add is used now instead of addVector
+            Vec3d vec3d1 = vec3d.add((double) f7 * d5, (double) f6 * d5, (double) f9 * d5);
 
             RayTraceResult rtr = world.rayTraceBlocks(vec3d, vec3d1, true);
 

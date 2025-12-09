@@ -46,8 +46,8 @@ public class ItemMiningGem extends CreepsItem {
         float f7 = f4 * f5;
         float f9 = f3 * f5;
         double d9 = 5D;
-
-        Vec3d vec3d1 = vec3d.addVector((double) f7 * d9, (double) f6 * d9, (double) f9 * d9);
+        //add is used now instead of addVector
+        Vec3d vec3d1 = vec3d.add((double) f7 * d9, (double) f6 * d9, (double) f9 * d9);
 
         RayTraceResult rayTraceResult = world.rayTraceBlocks(vec3d, vec3d1, true);
 

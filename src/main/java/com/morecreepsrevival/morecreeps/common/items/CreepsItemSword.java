@@ -9,8 +9,8 @@ public class CreepsItemSword extends ItemSword {
         super(toolMaterial);
 
         setRegistryName(new ResourceLocation(MoreCreepsAndWeirdos.modid, itemName));
-
-        setUnlocalizedName(MoreCreepsAndWeirdos.modid + "." + itemName);
+        //setTranslationKey is used now instead of setUnlocalizedName
+        setTranslationKey(MoreCreepsAndWeirdos.modid + "." + itemName);
 
         setCreativeTab(MoreCreepsAndWeirdos.creativeTab);
     }

@@ -43,7 +43,7 @@ public class EntityHippo extends EntityCreepBase implements IEntityCanChangeSize
 
         tasks.addTask(1, new EntityAISwimming(this));
 
-        tasks.addTask(1, new EntityHippo.GoToWaterGoal(this, 1.0d));
+        tasks.addTask(1, new GoToWaterGoal(this, 1.0d));
 
         tasks.addTask(2, new EntityAIWander(this, 1.0d));
 

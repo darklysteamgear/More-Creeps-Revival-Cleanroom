@@ -157,7 +157,7 @@ public class WorldGenCastle extends WorldGenerator {
     public BlockPos findStructurePos(@Nonnull World world, @Nonnull Random rand, @Nonnull BlockPos pos) {
         Biome biome = world.getBiome(pos);
 
-        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))) {
+        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
             return null;
         }
 

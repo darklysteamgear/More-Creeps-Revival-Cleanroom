@@ -58,8 +58,9 @@ public class MoreCreepsAndWeirdos {
     public static final String name = "More Creeps And Weirdos Revival";
     public static final String version = "1.0.28";
 
+    //getTabIconItem class changed to createIcon
     public static final CreativeTabs creativeTab = new CreativeTabs("creepsTab") {
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(CreepsItemHandler.floobAchievement);
         }
     };
@@ -124,9 +125,11 @@ public class MoreCreepsAndWeirdos {
 
         //((EntityPlayerMP) player).getAdvancements().getProgress()
 
-        String domain = event.getAdvancement().getId().getResourceDomain();
+        //changed getResourceDomain() to getNamespace()
+        String domain = event.getAdvancement().getId().getNamespace();
 
-        String advancementname = event.getAdvancement().getId().getResourcePath();
+        //changed getResourcePath to getPath
+        String advancementname = event.getAdvancement().getId().getPath();
 
         if (!domain.equals("morecreeps") || advancementname.equals("root")) return;
 

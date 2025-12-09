@@ -356,7 +356,7 @@ public class EntityRay extends Entity implements IProjectile {
             this.inGround = true;
 
             if (iblockstate.getMaterial() != Material.AIR) {
-                this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+                this.inTile.onEntityCollision(this.world, blockpos, iblockstate, this);
 
                 if (!world.isRemote && this.inTile != Blocks.BEDROCK && rand.nextInt(3) == 0) {
                     if (MoreCreepsConfig.Miscellaneous.rayGunFire) {

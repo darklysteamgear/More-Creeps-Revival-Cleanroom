@@ -48,8 +48,8 @@ public class WorldGenPyramid extends WorldGenerator {
     @Override
     public boolean generate(@Nonnull World world, @Nonnull Random rand, @Nonnull BlockPos pos) {
         Biome biome = world.getBiome(pos);
-
-        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))) {
+        //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) is used to find vanilla biomes now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
+        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
             return false;
         }
 

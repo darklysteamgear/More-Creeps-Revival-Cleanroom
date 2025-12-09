@@ -112,8 +112,8 @@ public class EntityFloob extends EntityCreepBase implements IRangedAttackMob, IM
         double d0 = target.posX - this.posX;
         double d1 = target.getEntityBoundingBox().minY + (double) (target.height / 3.0F) - ray.posY;
         double d2 = target.posZ - this.posZ;
-
-        ray.shoot(d0, d1, d2, 1.6F, (float) (14 - world.getDifficulty().getDifficultyId() * 4));
+        //world.getDifficulty.getId is used now instead of world.getDifficulty.getDifficultyId
+        ray.shoot(d0, d1, d2, 1.6F, (float) (14 - world.getDifficulty().getId() * 4));
 
         world.spawnEntity(ray);
 

@@ -248,7 +248,8 @@ public class EntityCreepItem extends Entity {
     @Override
     @Nonnull
     public String getName() {
-        return I18n.format("item." + getItem().getUnlocalizedName());
+        //getItem().getTranslationKey() is used now instead of getItem().getUnlocalizedName()
+        return I18n.format("item." + getItem().getTranslationKey());
     }
 
     public ItemStack getItem() {

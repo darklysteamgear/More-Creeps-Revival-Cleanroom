@@ -24,8 +24,8 @@ public class CreepsItemArmor extends ItemArmor {
 
     public CreepsItemArmor setItemName(String itemName) {
         setRegistryName(new ResourceLocation(MoreCreepsAndWeirdos.modid, itemName));
-
-        setUnlocalizedName(MoreCreepsAndWeirdos.modid + "." + itemName);
+        //setTranslationName is used now instead of setUnlocalizedName
+        setTranslationKey(MoreCreepsAndWeirdos.modid + "." + itemName);
 
         return this;
     }

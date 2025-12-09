@@ -15,7 +15,8 @@ public class CreepsBlock extends Block {
 
     public CreepsBlock setBlockName(String blockName) {
         setRegistryName(new ResourceLocation(MoreCreepsAndWeirdos.modid, blockName));
-        setUnlocalizedName(MoreCreepsAndWeirdos.modid + "." + blockName);
+        //SetTranslationKey is used now instead of setUnlocalizedName
+        setTranslationKey(MoreCreepsAndWeirdos.modid + "." + blockName);
         return this;
     }
 }

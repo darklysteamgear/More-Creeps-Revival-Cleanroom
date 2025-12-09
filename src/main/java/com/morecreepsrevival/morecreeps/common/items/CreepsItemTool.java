@@ -17,8 +17,8 @@ public class CreepsItemTool extends ItemTool {
         super(toolMaterial, EffectiveOn);
 
         setRegistryName(new ResourceLocation(MoreCreepsAndWeirdos.modid, itemName));
-
-        setUnlocalizedName(MoreCreepsAndWeirdos.modid + "." + itemName);
+        //setTranslationKey is used now instead of setUnlocalizedName
+        setTranslationKey(MoreCreepsAndWeirdos.modid + "." + itemName);
 
         setCreativeTab(MoreCreepsAndWeirdos.creativeTab);
     }

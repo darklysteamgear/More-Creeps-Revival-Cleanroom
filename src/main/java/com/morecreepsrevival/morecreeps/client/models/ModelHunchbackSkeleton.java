@@ -47,15 +47,15 @@ public class ModelHunchbackSkeleton extends ModelBiped {
      * and third as in the setRotationAngles method.
      */
     public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
-        this.rightArmPose = ModelBiped.ArmPose.EMPTY;
-        this.leftArmPose = ModelBiped.ArmPose.EMPTY;
+        this.rightArmPose = ArmPose.EMPTY;
+        this.leftArmPose = ArmPose.EMPTY;
         ItemStack itemstack = entitylivingbaseIn.getHeldItem(EnumHand.MAIN_HAND);
 
         if (itemstack.getItem() == Items.BOW && ((EntityHunchbackSkeleton) entitylivingbaseIn).isSwingingArms()) {
             if (entitylivingbaseIn.getPrimaryHand() == EnumHandSide.RIGHT) {
-                this.rightArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
+                this.rightArmPose = ArmPose.BOW_AND_ARROW;
             } else {
-                this.leftArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
+                this.leftArmPose = ArmPose.BOW_AND_ARROW;
             }
         }
 
