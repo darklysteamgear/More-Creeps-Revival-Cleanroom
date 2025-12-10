@@ -140,44 +140,54 @@
 	},
 	"mummy": {
 		"category": "hostile",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:mummy1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:mummy2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:mummy3",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:mummy4",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"mummyhurt": {
 		"category": "hostile",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:mummyhurt1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:mummyhurt2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"mummydeath": {
 		"category": "hostile",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:mummydeath",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
@@ -527,44 +537,54 @@
 	},
 	"babymummy": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:babymummy1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:babymummy2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:babymummy3",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:babymummy4",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"babymummyhurt": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:babymummyhurt1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:babymummyhurt2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"babymummydeath": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:babymummydeath1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
@@ -626,52 +646,64 @@
 	},
 	"blacksoul": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:blacksoul1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksoul2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksoul3",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"blacksoulhurt": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:blacksoulhurt1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksoulhurt2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksoulhurt3",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},
 	"blacksouldeath": {
 		"category": "neutral",
+        "pitch": 1.0,
 		"sounds": [
 			{
 				"name": "morecreeps:blacksouldeath1",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksouldeath2",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			},
 			{
 				"name": "morecreeps:blacksouldeath3",
-				"stream": false
+				"stream": false,
+                "pitch": 1.0
 			}
 		]
 	},

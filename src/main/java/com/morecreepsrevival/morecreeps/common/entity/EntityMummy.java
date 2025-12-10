@@ -21,6 +21,7 @@ public class EntityMummy extends EntityCreepBase implements IMob {
         creatureType = EnumCreatureType.MONSTER;
 
         spawnOnlyAtNight = true;
+        spawnOnlyOnSurface = true;
 
         baseHealth = (float) rand.nextInt(10) + 20.0f;
 

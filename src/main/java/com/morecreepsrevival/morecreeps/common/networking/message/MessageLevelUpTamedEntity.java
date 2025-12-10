@@ -48,7 +48,7 @@ public class MessageLevelUpTamedEntity implements IMessage {
                 if (entity instanceof EntityCreepBaseOwnable) {
                     EntityCreepBaseOwnable creep = (EntityCreepBaseOwnable) entity;
 
-                    if (creep.isPlayerOwner(player) && creep.getLevel() < creep.getMaxLevel()) {
+                    if (creep.isPlayerOwner(player) && (creep.getLevel() < creep.getMaxLevel())) {
                         while (creep.getLevel() < creep.getMaxLevel()) {
                             creep.addTotalDamage(creep.getLevelDamage());
                         }

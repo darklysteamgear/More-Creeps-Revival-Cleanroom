@@ -80,7 +80,7 @@ public class EntityRobotTodd extends EntityCreepBase implements IMob, IEntityCan
 
     @Override
     protected void dropItemsOnDeath() {
-        if (rand.nextInt(5) == 0) {
+        if (rand.nextInt(3) == 0) {
             dropItem(CreepsItemHandler.battery, rand.nextInt(2) + 1);
         }
     }

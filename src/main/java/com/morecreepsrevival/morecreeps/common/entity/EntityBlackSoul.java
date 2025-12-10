@@ -23,6 +23,8 @@ public class EntityBlackSoul extends EntityCreepBase implements IMob, IEntityCan
 
         spawnOnlyAtNight = true;
 
+        spawnOnlyOnSurface = true;
+
         baseHealth = 50.0f;
 
         baseSpeed = 0.25d;

@@ -31,6 +31,7 @@ public class EntityBabyMummy extends EntityCreepBase implements IMob {
 
         creatureType = EnumCreatureType.MONSTER;
         spawnOnlyAtNight = true;
+        spawnOnlyOnSurface = true;
         baseHealth = 15.0f;
         baseSpeed = 0.25d;
         baseAttackDamage = 1.0d;

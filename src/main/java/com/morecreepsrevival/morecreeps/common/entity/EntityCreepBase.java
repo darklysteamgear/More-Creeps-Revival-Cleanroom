@@ -38,6 +38,7 @@ public class EntityCreepBase extends EntityCreature {
     private static final DataParameter<Float> hammerSwing = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.FLOAT);
     private static final DataParameter<Float> size = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.FLOAT);
 
+
     protected String baseTexture = "";
 
     protected float baseHealth = 100.0f;
@@ -51,6 +52,7 @@ public class EntityCreepBase extends EntityCreature {
     protected EnumCreatureType creatureType = EnumCreatureType.CREATURE;
 
     protected boolean spawnOnlyAtNight = false;
+    protected boolean spawnOnlyOnSurface = false;
 
     private int internalWanderState = 0;
 
@@ -734,11 +736,23 @@ public class EntityCreepBase extends EntityCreature {
 
     @Override
     public float getBlockPathWeight(BlockPos blockPos) {
+        //checks if the mob only spawns at night, and if it can only spawn on the surface
+        float blockPathWeight = (world.getLightBrightness(blockPos) - 0.5f);;
         if (getCreatureType() == EnumCreatureType.MONSTER && spawnOnlyAtNight) {
-            return (0.5f - world.getLightBrightness(blockPos));
+            //System.out.println("THE MOB " + getName() + " CAN ONLY SPAWN AT NIGHT");
+            blockPathWeight = (0.5f - world.getLightBrightness(blockPos));
         }
 
-        return (world.getLightBrightness(blockPos) - 0.5f);
+        if (spawnOnlyOnSurface) {
+            int x = blockPos.getX();
+            int z = blockPos.getZ();
+            int surfaceHeight = world.getChunk(x >> 4, z >> 4).getHeightValue(x & 15, z & 15);
+            //System.out.println("THE MOB " + getName() + " CAN ONLY SPAWN ON THE SURFACE");
+            if ((blockPos.getY() != surfaceHeight)) {
+                blockPathWeight = -1.0f; // Not on surface
+            }
+        }
+        return blockPathWeight;
     }
 
     protected boolean isValidLightLevel() {

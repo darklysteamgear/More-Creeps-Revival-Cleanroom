@@ -60,9 +60,10 @@ public class EntityRobotTed extends EntityCreepBase implements IMob, IEntityCanC
         return 2.0f;
     }
 
+    @Override
     protected void dropItemsOnDeath() {
-        if (rand.nextInt(5) == 0) {
-            dropItem(CreepsItemHandler.ram16k, rand.nextInt(3) + 1);
+        if (rand.nextInt(3) == 0) {
+            dropItem(CreepsItemHandler.ram16k, rand.nextInt(2) + 1);
         }
     }
 
