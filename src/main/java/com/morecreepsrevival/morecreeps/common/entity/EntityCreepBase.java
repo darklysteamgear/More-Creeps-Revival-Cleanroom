@@ -737,7 +737,7 @@ public class EntityCreepBase extends EntityCreature {
     @Override
     public float getBlockPathWeight(BlockPos blockPos) {
         //checks if the mob only spawns at night, and if it can only spawn on the surface
-        float blockPathWeight = (world.getLightBrightness(blockPos) - 0.5f);;
+        float blockPathWeight = (world.getLightBrightness(blockPos) - 0.5f);
         if (getCreatureType() == EnumCreatureType.MONSTER && spawnOnlyAtNight) {
             //System.out.println("THE MOB " + getName() + " CAN ONLY SPAWN AT NIGHT");
             blockPathWeight = (0.5f - world.getLightBrightness(blockPos));
