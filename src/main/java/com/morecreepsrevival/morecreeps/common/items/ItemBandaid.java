@@ -21,7 +21,7 @@ public class ItemBandaid extends CreepsItem {
     @Override
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
-        if (player.getHealth() < 20) {
+        if (player.getHealth() < player.getMaxHealth()) {
             player.playSound(CreepsSoundHandler.bandaidSound, 1.0f, 1.0f);
 
             player.getHeldItem(hand).shrink(1);
