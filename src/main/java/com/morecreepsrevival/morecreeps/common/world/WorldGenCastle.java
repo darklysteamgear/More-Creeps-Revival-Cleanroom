@@ -156,15 +156,18 @@ public class WorldGenCastle extends WorldGenerator {
     }
 
     public BlockPos findStructurePos(@Nonnull World world, @Nonnull Random rand, @Nonnull BlockPos pos) {
-        Biome biome = world.getBiome(pos);
+
         int dimension = world.provider.getDimension();
 
-        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
-            return null;
-        }
         if (!(MoreCreepsConfig.hasDimension(dimension, "castle"))){;
             return null;
         }
+
+        Biome biome = world.getBiome(pos);
+        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
+            return null;
+        }
+
 
         for (Type type : BiomeDictionary.getTypes(biome)) {
             if (type == Type.NETHER || type == Type.END) {
