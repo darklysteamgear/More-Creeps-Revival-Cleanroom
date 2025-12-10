@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class ItemCavemanClub extends CreepsItemSword {
     public ItemCavemanClub() {
-        super("caveman_club", ToolMaterial.WOOD);
+        super("caveman_club", CreepsItemHandler.CLUB_TOOL);
 
         setMaxDamage(64);
     }

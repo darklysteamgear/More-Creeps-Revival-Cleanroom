@@ -73,6 +73,30 @@ public class MoreCreepsConfig {
         @Config.Comment("Allow Bum Public Urination")
         public static boolean publicUrination = true;
 
+        @Config.Comment("Set damage for the raygun (half hearts)")
+        public static double raygunDamage = 2.0D;
+
+        @Config.Comment("Set damage for the gun (half hearts)")
+        public static double gunDamage = 2.0D;
+
+        @Config.Comment("Set damage for the gem sword")
+        public static float gemSwordDamage = 4.5F;
+
+        @Config.Comment("Set damage for the club")
+        public static float clubDamage = 2.5F;
+
+        @Config.Comment("Set protection for zebra helmet")
+        public static int zebraHelmetP = 2;
+
+        @Config.Comment("Set protection for zebra chestplate")
+        public static int zebraChestP = 6;
+
+        @Config.Comment("Set protection for zebra leggings")
+        public static int zebraLeggingsP = 4;
+
+        @Config.Comment("Set protection for zebra boots")
+        public static int zebraBootsP = 2;
+
     }
 
     @Config(modid = "morecreeps", category = "Spawn Numbers")

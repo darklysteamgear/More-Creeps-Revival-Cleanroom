@@ -46,7 +46,7 @@ public class EntityBullet extends EntityRay {
     protected void onHit(RayTraceResult rtr) {
         if(world.isRemote) return;
         Entity entityHit = rtr.entityHit;
-
+        setDamage(MoreCreepsConfig.Miscellaneous.gunDamage);
         if (entityHit != null && entityHit == shootingEntity) {
             return;
         }

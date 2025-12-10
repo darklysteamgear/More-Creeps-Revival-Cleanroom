@@ -9,7 +9,8 @@ import net.minecraft.world.World;
 
 public class ItemGemSword extends CreepsItemSword {
     public ItemGemSword() {
-        super("gem_sword", ToolMaterial.DIAMOND);
+
+        super("gem_sword", CreepsItemHandler.GEM_TOOL);
 
         setMaxDamage(256);
     }

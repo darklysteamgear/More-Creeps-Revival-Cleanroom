@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.items;
 
 import com.morecreepsrevival.morecreeps.common.MoreCreepsAndWeirdos;
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -81,8 +82,9 @@ public class CreepsItemHandler {
     public static Item vhsTape;
     public static Item vhsTape2;
     public static Item vHammer;
-
-    public static ArmorMaterial ZEBRA_ARMOR = EnumHelper.addArmorMaterial("zebra_armor", MoreCreepsAndWeirdos.modid + ":zebra_armor", 25, new int[]{2, 4, 6, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
+    public static Item.ToolMaterial GEM_TOOL = EnumHelper.addToolMaterial( "gem_sword", 4, 2562, 9.0F, MoreCreepsConfig.Miscellaneous.gemSwordDamage, 20);
+    public static Item.ToolMaterial CLUB_TOOL = EnumHelper.addToolMaterial( "club_weapon", 1, 124, 5.0F, MoreCreepsConfig.Miscellaneous.clubDamage, 10);
+    public static ArmorMaterial ZEBRA_ARMOR = EnumHelper.addArmorMaterial("zebra_armor", MoreCreepsAndWeirdos.modid + ":zebra_armor", 25, new int[]{MoreCreepsConfig.Miscellaneous.zebraBootsP, MoreCreepsConfig.Miscellaneous.zebraLeggingsP, MoreCreepsConfig.Miscellaneous.zebraChestP, MoreCreepsConfig.Miscellaneous.zebraHelmetP}, 5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
     public static void initItems() {
         // Achievements

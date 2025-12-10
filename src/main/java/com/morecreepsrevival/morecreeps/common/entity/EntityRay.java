@@ -53,7 +53,7 @@ public class EntityRay extends Entity implements IProjectile {
         this.xTile = -1;
         this.yTile = -1;
         this.zTile = -1;
-        this.damage = 2.0D;
+        this.damage = MoreCreepsConfig.Miscellaneous.raygunDamage;
         this.setSize(0.25F, 0.25F);
         setNoGravity(true);
     }

@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.items;
 
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.entity.EntityRay;
 import com.morecreepsrevival.morecreeps.common.sounds.CreepsSoundHandler;
 import net.minecraft.entity.player.EntityPlayer;
