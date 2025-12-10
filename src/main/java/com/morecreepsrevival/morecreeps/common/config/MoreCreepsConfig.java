@@ -36,7 +36,7 @@ public class MoreCreepsConfig {
         public static float pyramidRarityChance = 1f;
 
         @Config.Comment("Pyramid Dimensions. list of dimension IDs pyramids are allowed to spawn in")
-        public static int[] pyramidDimensions = {};
+        public static int[] pyramidDimensions = {0};
 
         @Config.Comment("Enable Castle Gen")
         public static boolean castleGen = true;
@@ -45,7 +45,7 @@ public class MoreCreepsConfig {
         public static float castleRarityChance = 0.1f;
 
         @Config.Comment("Castle Dimensions. list of dimension IDs pyramids are allowed to spawn in")
-        public static int[] castleDimensions = {};
+        public static int[] castleDimensions = {0};
 
         @Config.Comment("Enable Jail")
         public static boolean jailActive = true;
