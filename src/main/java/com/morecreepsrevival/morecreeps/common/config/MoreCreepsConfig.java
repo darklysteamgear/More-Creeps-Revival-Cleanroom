@@ -1,6 +1,7 @@
 package com.morecreepsrevival.morecreeps.common.config;
 
 import net.minecraftforge.common.config.Config;
+import java.lang.reflect.Field;
 
 @Config(modid = "morecreeps", category = "General")
 public class MoreCreepsConfig {
@@ -34,11 +35,17 @@ public class MoreCreepsConfig {
         @Config.Comment("Pyramid Rarity. Given as a percentage chance per chunk, so 1 = 1% chance per Desert chunk.")
         public static float pyramidRarityChance = 1f;
 
+        @Config.Comment("Pyramid Dimensions. list of dimension IDs pyramids are allowed to spawn in")
+        public static int[] pyramidDimensions = {};
+
         @Config.Comment("Enable Castle Gen")
         public static boolean castleGen = true;
 
         @Config.Comment("Castle Rarity. Given as a percentage chance per chunk, so 0.1 = 0.1% chance per chunk.")
         public static float castleRarityChance = 0.1f;
+
+        @Config.Comment("Castle Dimensions. list of dimension IDs pyramids are allowed to spawn in")
+        public static int[] castleDimensions = {};
 
         @Config.Comment("Enable Jail")
         public static boolean jailActive = true;
@@ -192,6 +199,25 @@ public class MoreCreepsConfig {
             }
         }
 
+        return false;
+    }
+    public static boolean hasDimension(int dimension, String structure) {
+        try {
+            // Get the field from WorldGen class by name
+            Field field = WorldGen.class.getField(structure + "Dimensions"); // or getDeclaredField() for non-public fields
+
+            // Ensure it's an array of ints
+            if (field.getType().isArray() && field.getType().getComponentType() == int.class) {
+                int[] dims = (int[]) field.get(null); // null for static field
+                for (int dim : dims) {
+                    if (dim == dimension) {
+                        return true;
+                    }
+                }
+            }
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
