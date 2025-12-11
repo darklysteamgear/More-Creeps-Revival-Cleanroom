@@ -53,7 +53,7 @@ public class WorldGenPyramid extends WorldGenerator {
         }
         Biome biome = world.getBiome(pos);
         //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) is used to find vanilla biomes now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
-        if (!((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
+        if (!((MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
             return false;
         }
         for (BiomeDictionary.Type type : BiomeDictionary.getTypes(biome)) {

@@ -89,7 +89,7 @@ public class CreepsEntityHandler {
                 createEntity(EntityPonyGirl.class, "ponygirl", MoreCreepsConfig.SpawnNumbers.ponyGirlSpawnAmt, 1, 1, EnumCreatureType.CREATURE, 0x74706A, 0x373532/*, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)*/),
                 createEntity(EntityPony.class, "pony", 0, 0, 0, EnumCreatureType.CREATURE),
                 createEntity(EntityPonyCloud.class, "ponycloud", 0, 0, 0, EnumCreatureType.AMBIENT),
-                createEntity(EntityRockMonster.class, "rock_monster", MoreCreepsConfig.SpawnNumbers.rockMonsterSpawnAmt, 1, 1, EnumCreatureType.MONSTER, 0x74706A, 0x373532, getBiomesForType(BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.DRY, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.PLAINS)),
+                createEntity(EntityRockMonster.class, "rock_monster", MoreCreepsConfig.SpawnNumbers.rockMonsterSpawnAmt, 1, 1, EnumCreatureType.MONSTER, 0x74706A, 0x373532, getBiomesForType(BiomeDictionary.Type.DRY, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.PLAINS)),
                 //createEntity(EntityVHS.class, "vhs", MoreCreepsConfig.SpawnNumbers.vhsSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x858585, 0x4D4D4D, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
                 //createEntity(EntityS.class, "s", MoreCreepsConfig.SpawnNumbers.moneyManSSpawnAmt), 1, 1, EnumCreatureType.MONSTER, 0x1F1F1F, 0x87AE73, getBiomesNotType(Type.COLD, Type.SNOWY, Type.NETHER, Type.END)),
                 createEntity(EntityDesertLizard.class, "desert_lizard", MoreCreepsConfig.SpawnNumbers.desertLizardSpawnAmt, 1, 1, EnumCreatureType.MONSTER, 0x1C5300, 0x609445, getBiomesForType(BiomeDictionary.Type.HOT, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SAVANNA, BiomeDictionary.Type.SANDY)),
@@ -102,9 +102,16 @@ public class CreepsEntityHandler {
                 .entity(classz)
                 .name(MoreCreepsAndWeirdos.modid + "." + name)
                 .id(new ResourceLocation(MoreCreepsAndWeirdos.modid, name), entityId++)
-                .tracker(40, 1, true);
+                .tracker(50, 1, true);
 
         if (EntityCreepBase.class.isAssignableFrom(classz)) {
+            //System.out.print(" " + name + ", ");
+            for (String bannedCreep : MoreCreepsConfig.Spawn.bannedCreeps) {
+                if (bannedCreep.toLowerCase().equals(name)){
+                    System.out.println(name + " Is banned");
+                    return builder.build();
+                }
+            }
             builder.spawn(creatureType, weight <= 0 ? weight : MoreCreepsConfig.calculateSpawnRate(weight), min, max, biomes);
         }
 
@@ -133,7 +140,7 @@ public class CreepsEntityHandler {
         for (BiomeDictionary.Type type : types) {
             for (Biome biome : BiomeDictionary.getBiomes(type)) {
                 //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft")) is used now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
-                if ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft")) {
+                if ((MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft")) {
                     biomes.add(biome);
                 }
             }
@@ -165,7 +172,7 @@ public class CreepsEntityHandler {
                 }
             }
             //Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) is used now instead of Objects.requireNonNull(biome.getRegistryName()).getResourceDomain().equals("minecraft"))
-            if (!skip && ((MoreCreepsConfig.Spawn.spawnInNonVanillaBiomes && MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
+            if (!skip && ((MoreCreepsConfig.hasBiome(Objects.requireNonNull(biome.getRegistryName()).toString())) || Objects.requireNonNull(biome.getRegistryName()).getNamespace().equals("minecraft"))) {
                 biomes.add(biome);
             }
         }

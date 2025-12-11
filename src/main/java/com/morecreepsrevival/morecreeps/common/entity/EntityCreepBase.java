@@ -1,5 +1,6 @@
 package com.morecreepsrevival.morecreeps.common.entity;
 
+import com.morecreepsrevival.morecreeps.common.config.MoreCreepsConfig;
 import com.morecreepsrevival.morecreeps.common.networking.CreepsPacketHandler;
 import com.morecreepsrevival.morecreeps.common.networking.message.MessageDismountEntity;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.reflect.Constructor;
-
 public class EntityCreepBase extends EntityCreature {
 
     private static final DataParameter<String> texture = EntityDataManager.createKey(EntityCreepBase.class, DataSerializers.STRING);
@@ -217,6 +217,13 @@ public class EntityCreepBase extends EntityCreature {
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
+        //System.out.println("Checking if " + getName() + " is on the naughty list");
+        for (String str : MoreCreepsConfig.Spawn.bannedCreeps) {
+            if (getName().toLowerCase().replaceAll(" ", "").equals(str.replaceAll("_", ""))){
+                //System.out.println(getName() + " has been a very bad boy this year. blocking initial spawn");
+                setDead();
+            }
+        }
         NBTTagCompound props = compound.getCompoundTag("MoreCreepsEntity");
 
         if (props.hasKey("ModelSize")) {
@@ -715,6 +722,7 @@ public class EntityCreepBase extends EntityCreature {
 
     @Override
     public void onUpdate() {
+
         if (internalWanderState != getWanderState()) {
             initEntityAI();
 
@@ -722,6 +730,7 @@ public class EntityCreepBase extends EntityCreature {
         }
 
         super.onUpdate();
+
 
         if (getHammerSwing() < 0.0f) {
             addHammerSwing(0.45f);
@@ -733,50 +742,18 @@ public class EntityCreepBase extends EntityCreature {
             setDead();
         }
     }
-
     @Override
-    public float getBlockPathWeight(BlockPos blockPos) {
-        //checks if the mob only spawns at night, and if it can only spawn on the surface
-        float blockPathWeight = (world.getLightBrightness(blockPos) - 0.5f);
-        if (getCreatureType() == EnumCreatureType.MONSTER && spawnOnlyAtNight) {
-            //System.out.println("THE MOB " + getName() + " CAN ONLY SPAWN AT NIGHT");
-            blockPathWeight = (0.5f - world.getLightBrightness(blockPos));
+    public boolean getCanSpawnHere(){
+        boolean isSpawnableSurface = true;
+        boolean isSpawnableLight = true;
+        if(spawnOnlyOnSurface) {
+            isSpawnableSurface = this.world.canSeeSky(new BlockPos(this));
         }
-
-        if (spawnOnlyOnSurface) {
-            int x = blockPos.getX();
-            int z = blockPos.getZ();
-            int surfaceHeight = world.getChunk(x >> 4, z >> 4).getHeightValue(x & 15, z & 15);
-            //System.out.println("THE MOB " + getName() + " CAN ONLY SPAWN ON THE SURFACE");
-            if ((blockPos.getY() != surfaceHeight)) {
-                blockPathWeight = -1.0f; // Not on surface
-            }
+        if(spawnOnlyAtNight){
+            isSpawnableLight = (this.world.getLightBrightness(new BlockPos(this)) <= 0.7);
         }
-        return blockPathWeight;
+        return super.getCanSpawnHere() && isSpawnableLight && isSpawnableSurface;
     }
-
-    protected boolean isValidLightLevel() {
-        if (!spawnOnlyAtNight) {
-            return true;
-        }
-
-        BlockPos blockPos = new BlockPos(posX, getEntityBoundingBox().minY, posZ);
-
-        if (world.getLightFor(EnumSkyBlock.SKY, blockPos) > rand.nextInt(32)) {
-            return false;
-        }
-
-        int i = world.getLightFromNeighbors(blockPos);
-
-        if (world.isThundering()) {
-            int j = world.getSkylightSubtracted();
-
-            world.setSkylightSubtracted(10);
-
-            i = world.getLightFromNeighbors(blockPos);
-
-            world.setSkylightSubtracted(j);
-        }
 
         return (i <= rand.nextInt(8));
     }

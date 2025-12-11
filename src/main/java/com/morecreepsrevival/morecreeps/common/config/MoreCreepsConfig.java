@@ -14,15 +14,20 @@ public class MoreCreepsConfig {
 
     @Config(modid = "morecreeps", category = "Spawn")
     public static class Spawn {
-
+        @Config.Comment("This is a list of entities from core creeps that are not allowed to spawn. Adding entries here will completely disable these entities.\n a list of creep names for reference: guineapig,  tombstone,  trophy,  babymummy,  blacksoul,  mummy,  googoat,  kid,  lolliman,  pyramid_guardian,  evilcreature,  castleguard,  castlecritter,  castleking,  g,  robot_ted,  robot_todd,  lawyer_from_hell,  bigbaby,  schlump,  thief,  floob,  floobship,  horsehead,  hotdog,  digbug,  bubblescum,  sneakysal,  ratman,  prisoner,  snowdevil,  evilchicken,  evilpig,  doghouse,  blorp,  camel,  zebra,  rocketgiraffe,  evilscientist,  mandog,  caveman,  evil_light,  hunchback,  hunchbackskeleton,  bum,  evilsnowman,  preacher,  growbot_gregg,  cameljockey,  invisible_man,  ponygirl,  pony,  ponycloud,  rock_monster,  desert_lizard,  hippo\n You can also use the tellme mod to look up all entities associated with the mod.")
+        public static String[] bannedCreeps = {};
         @Config.Comment("This setting controls the overall spawn rate. The spawn rate of every mob is multiplied by this number. So 0.5 is the default rate, 1.0 is 2x the rate, 0.25 is half the rate, etc.")
         public static double globalSpawnRate = 0.75f;
 
-        @Config.Comment("Setting this to true will cause More Creeps mobs to spawn in biomes added by other mods.")
-        public static boolean spawnInNonVanillaBiomes = false;
+        @Config.Comment("Setting this to true will enable the biome whitelist for more creeps mobs to spawn in. Disabling both the blacklist and the whitelist will prevent mobs from spawning in any modded biomes.")
+        public static boolean enableBiomeWL = false;
+        @Config.Comment("This is the  whitelist of Non-Vanilla biomes that More Creeps mobs should ONLY spawn in.")
+        public static String[] biomesWL = {};
 
-        @Config.Comment("This a list of Non-Vanilla biomes that More Creeps mobs should spawn in.")
-        public static String[] nonVanillaBiomes = {};
+        @Config.Comment("Setting this to true will enable the biome blacklist for more creeps mobs to spawn in. Disabling the whitelist and the blacklist will prevent mobs from spawning in any modded biomes.")
+        public static boolean enableBiomeBL = true;
+        @Config.Comment("This is the  blacklist of Non-Vanilla biomes that More Creeps mobs should NOT spawn in.")
+        public static String[] biomesBL = {};
 
     }
 
@@ -99,7 +104,7 @@ public class MoreCreepsConfig {
 
     }
 
-    @Config(modid = "morecreeps", category = "Spawn Numbers")
+    @Config(modid = "morecreeps", category = "Spawn Weights")
     public static class SpawnNumbers {
 
         public static int guineaPigSpawnAmt = 5;
@@ -217,14 +222,24 @@ public class MoreCreepsConfig {
     }
 
     public static boolean hasBiome(String biome) {
-        for (String str : Spawn.nonVanillaBiomes) {
-            if (str.equals(biome)) {
-                return true;
+        if (Spawn.enableBiomeWL) {
+            for (String str : Spawn.biomesWL) {
+                if (str.equals(biome)) {
+                    return true;
+                }
             }
         }
-
+        if (Spawn.enableBiomeBL) {
+            for (String str : Spawn.biomesBL) {
+                if (str.equals(biome)) {
+                    return false;
+                }
+            }
+            return true;
+        }
         return false;
-    }
+        }
+
     public static boolean hasDimension(int dimension, String structure) {
         try {
             // Get the field from WorldGen class by name
